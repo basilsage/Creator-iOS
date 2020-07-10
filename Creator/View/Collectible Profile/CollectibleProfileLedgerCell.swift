@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class CollectibleProfileLedgerCell : UITableViewCell {
+class CollectibleProfileLedgerCell : UICollectionViewCell {
     
     //MARK: Subviews
         
@@ -35,8 +35,8 @@ class CollectibleProfileLedgerCell : UITableViewCell {
         return availabilityStatus
     }()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
         let collectibleImageWidth : CGFloat = 40
         

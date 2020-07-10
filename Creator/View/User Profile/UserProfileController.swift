@@ -12,6 +12,7 @@ import Firebase
 
 class UserProfileController : UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+    //https://stackoverflow.com/questions/47261152/nest-a-uicollectionview-inside-a-uiview-programmatically/47263346
     
     let cellId = "cellId"
     var userId: String?
@@ -22,17 +23,29 @@ class UserProfileController : UICollectionViewController, UICollectionViewDelega
         print("Loading User Profile")
         collectionView?.backgroundColor = .white
         collectionView?.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerId")
+        
         collectionView?.register(UserProfilePhotoCell.self, forCellWithReuseIdentifier: cellId)
+        
         
         let settingsButton : UIBarButtonItem = UIBarButtonItem(image: UIImage(named: "settings.png"), style: .done, target: self, action: #selector(settingsButtonPressed))
         navigationItem.leftBarButtonItem = settingsButton
         navigationController?.navigationBar.tintColor = .black
-        navigationItem.title = Auth.auth().currentUser?.email
+        
         
     }
     
     @objc func settingsButtonPressed() {
-        let actionSheet = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
+        let actionSheet = UIAlertController(title: "Settings", message: "", preferredStyle: .actionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: "Change Username", style: .default, handler: { (_) in
+            print("Change username pressed")
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Help", style: .default, handler: { (_) in
+            print("Help button pressed")
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         actionSheet.addAction(UIAlertAction(title: "Logout", style: .destructive, handler: { (_) in
             do {
                 try Auth.auth().signOut()
@@ -84,8 +97,14 @@ class UserProfileController : UICollectionViewController, UICollectionViewDelega
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath) as! UserProfileHeader
+        let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath) as! UserProfileHeader
         
         return header
+    }
+
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSize(width: view.frame.width, height: 100)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {

@@ -18,11 +18,11 @@ class UserProfileHeader: UICollectionViewCell {
         self.editProfileFollowButton.layer.borderColor = UIColor(white: 0, alpha: 0.2).cgColor
     }
     
-    let profileImageView: UIImageView = {
-        let iv = UIImageView()
-        iv.image = #imageLiteral(resourceName: "raghav")
-        iv.contentMode = .scaleAspectFill
-        return iv
+    let profileImageViewButton: UIButton = {
+        let pivb = UIButton(type: .system)
+        pivb.setImage(#imageLiteral(resourceName: "add"), for: .normal)
+        pivb.contentMode = .scaleAspectFit
+        return pivb
     }()
     
     let usernameLabel: UILabel = {
@@ -89,16 +89,16 @@ class UserProfileHeader: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(profileImageView)
+        addSubview(profileImageViewButton)
         
-        let profilePicWidth : CGFloat = 50
-        profileImageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 15, paddingLeft: 150, paddingBottom: 0, paddingRight: 150, width: profilePicWidth, height: profilePicWidth * 2)
-        profileImageView.layer.cornerRadius = 80 / 2
-        profileImageView.clipsToBounds = true
+        let profilePicWidth : CGFloat = 80
+        profileImageViewButton.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 15, paddingLeft: frame.width / 2 - profilePicWidth / 2, paddingBottom: 0, paddingRight: frame.width / 2 - profilePicWidth / 2, width: profilePicWidth, height: profilePicWidth)
+        profileImageViewButton.clipsToBounds = true
+        profileImageViewButton.layer.cornerRadius = profilePicWidth / 2
 
         
         addSubview(usernameLabel)
-        usernameLabel.anchor(top: profileImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 15, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 40)
+        usernameLabel.anchor(top: profileImageViewButton.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 15, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 40)
         
         setupUserStatsView()
         

@@ -17,6 +17,7 @@ class ArtistProfileHeader : UITableViewHeaderFooterView {
         return bv
     }()
     
+    
     let artistProfilePic : UIImageView = {
         let artistProfilePic = UIImageView()
         artistProfilePic.image = #imageLiteral(resourceName: "rockyProfile")

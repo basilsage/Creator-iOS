@@ -9,13 +9,20 @@
 import Foundation
 import UIKit
 
-class CollectibleProfileController : UITableViewController {
+class CollectibleProfileController : UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Loading artist profile")
         
-        tableView.register(CollectibleProfileLedgerCell.self, forCellReuseIdentifier: cellId)
-        tableView.register(CollectibleProfileHeader.self, forHeaderFooterViewReuseIdentifier: "headerId")
+        let headerId = "headerId"
+        let footerId = "footerId"
+        
+        
+        collectionView.register(CollectibleProfileLedgerCell.self, forCellWithReuseIdentifier: cellId)
+        
+        collectionView.register(CollectibleProfileHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
+        collectionView.register(CollectibleProfileFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: footerId)
         
          self.navigationController?.navigationBar.tintColor = UIColor.black
         
@@ -27,8 +34,8 @@ class CollectibleProfileController : UITableViewController {
     var availabilityStatuses = ["$49.99", "$49.99", "$49.99","$49.99","$49.99", "$49.99", "$49.99","$49.99","$49.99","$49.99"]
     
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! CollectibleProfileLedgerCell
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! CollectibleProfileLedgerCell
         cell.collectibleImage.image = collectibleImages[indexPath.row]
         cell.collectibleName.text = collectibleNames[indexPath.row]
         cell.availabilityStatus.text = availabilityStatuses[indexPath.row]
@@ -37,24 +44,56 @@ class CollectibleProfileController : UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height - 500 - 80)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 100)
+    }
+    
+
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 440
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (view.frame.width - 1) / 2
+        return CGSize(width: width, height: width)
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "headerId")
-        return header
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        switch kind {
+
+        case UICollectionView.elementKindSectionHeader:
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerId", for: indexPath) as! CollectibleProfileHeader
+
+            header.backgroundColor = UIColor.blue
+            return header
+
+        case UICollectionView.elementKindSectionFooter:
+            let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "footerId", for: indexPath) as! CollectibleProfileFooter
+
+            footer.backgroundColor = UIColor.green
+            return footer
+
+        default:
+            assert(false, "Unexpected element kind")
+        }
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+    
+    init() {
+       let flowLayout = UICollectionViewFlowLayout()
+       flowLayout.scrollDirection = .horizontal
+        flowLayout.sectionHeadersPinToVisibleBounds = true
+       super.init(collectionViewLayout: flowLayout)
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
+    
 }

@@ -31,13 +31,14 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         setupViewControllers()
         
         tabBar.tintColor = .black
+
     }
     
     func setupViewControllers() {
         let homeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "homeUnfilled"), selectedImage: #imageLiteral(resourceName: "homeFilled"), rootViewController: HomeFeedController())
         
         //search
-        let discoverNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "globeUnfilled"), selectedImage: #imageLiteral(resourceName: "globeFilled"), rootViewController: HomeFeedController())
+        let discoverNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "globeUnfilled"), selectedImage: #imageLiteral(resourceName: "globeFilled"), rootViewController: DiscoverController(collectionViewLayout: UICollectionViewFlowLayout()))
 
         let profileNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "profileUnfilled"), selectedImage: #imageLiteral(resourceName: "profileFilled"), rootViewController: UserProfileController())
         

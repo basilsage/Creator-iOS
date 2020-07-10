@@ -17,6 +17,7 @@ class HomeFeedCell : UITableViewCell {
         let fpi = UIImageView()
         fpi.contentMode = .scaleAspectFill
         fpi.clipsToBounds = true
+        fpi.isUserInteractionEnabled = false
         return fpi
     }()
     
@@ -26,23 +27,13 @@ class HomeFeedCell : UITableViewCell {
         return fnl
     }()
     
-    
-    let likeButton : UIButton = {
-        let lb = UIButton(type: .system)
-        lb.setImage(#imageLiteral(resourceName: "like_unselected").withRenderingMode(.alwaysOriginal), for: .normal)
-        lb.tintColor = .black
-        lb.addTarget(self, action: #selector(likeButtonPressed), for: .touchUpInside)
-        return lb
-    }()
-    
-    @objc func likeButtonPressed() {
-        print("Like")
-    }
+
     
     let collectibleImage : UIImageView = {
         let ci = UIImageView()
         ci.clipsToBounds = true
         ci.contentMode = .scaleAspectFill
+        ci.isUserInteractionEnabled = false
         
         return ci
     }()
@@ -58,10 +49,19 @@ class HomeFeedCell : UITableViewCell {
     let collectibleTitle : UILabel = {
         let cd = UILabel()
         
-        cd.font = UIFont(name: "Futura", size: 14)
+//        cd.font = UIFont(name: "Futura", size: 14)
         cd.textColor = .black
                 
         return cd
+    }()
+    
+    let collectibleArtist : UILabel = {
+        let ca = UILabel()
+        
+        ca.font = UIFont(name: "Futura", size: 16)
+        ca.textColor = .black
+                
+        return ca
     }()
     
     let collectibleDescription : UILabel = {
@@ -75,6 +75,50 @@ class HomeFeedCell : UITableViewCell {
     }()
     
     
+    let topDivider : UIView = {
+        let td = UIView()
+        td.backgroundColor = UIColor.lightGray
+        
+        return td
+    }()
+    
+    let bottomDivider : UIView = {
+        let bd = UIView()
+        bd.backgroundColor = UIColor.lightGray
+        
+        return bd
+    }()
+    
+    lazy var likeButton : UIButton = {
+        let likeButton = UIButton(type: .system)
+        likeButton.tintColor = .black
+        likeButton.setTitle("🤍 10", for: .normal)
+        likeButton.addTarget(self, action: #selector(likeButtonPressed), for: .touchUpInside)
+//        lb.addTarget(self, action: #selector(likeButtonPressed), for: .touchUpInside)
+//        lb.setAttributedTitle(NSAttributedString(string: "🤍 10", attributes: [NSAttributedString.Key.foregroundColor:UIColor.gray, NSAttributedString.Key.font:UIFont(name:"Futura-Medium", size: 15)]), for: .normal)
+        
+        return likeButton
+    }()
+    
+    lazy var commentButton : UIButton = {
+        let cb = UIButton(type: .system)
+        cb.tintColor = .black
+        
+        cb.addTarget(self, action: #selector(commentButtonPressed), for: .touchUpInside)
+        cb.setAttributedTitle(NSAttributedString(string: "💬 2", attributes: [NSAttributedString.Key.foregroundColor:UIColor.gray, NSAttributedString.Key.font:UIFont(name:"Futura-Medium", size: 15) ?? UIFont.systemFont(ofSize: 15)]), for: .normal)
+        cb.isUserInteractionEnabled = true
+        
+        return cb
+    }()
+    
+    @objc func likeButtonPressed() {
+        print("LIKE LOCAL")
+    }
+    
+    @objc func commentButtonPressed() {
+        print("COMMENT LOCAL")
+    }
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -85,30 +129,52 @@ class HomeFeedCell : UITableViewCell {
         addSubview(friendProfileImage)
         friendProfileImage.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 15, paddingLeft: 15, paddingBottom: 0, paddingRight: 0, width: profileImageWidth, height: profileImageWidth)
         friendProfileImage.layer.cornerRadius = profileImageWidth / 2
-        
-        // Like Button
-        addSubview(likeButton)
-        likeButton.anchor(top: topAnchor, left: nil, bottom: nil, right: rightAnchor, paddingTop: 15, paddingLeft: 0, paddingBottom: 0, paddingRight: 15, width: profileImageWidth , height: profileImageWidth)
-        
+
+
+
         //Friend Name Label
         addSubview(friendActionDescriptor)
-        friendActionDescriptor.anchor(top: topAnchor, left: friendProfileImage.rightAnchor, bottom: nil, right: likeButton.leftAnchor, paddingTop: 15, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 100, height: profileImageWidth)
-        
+        friendActionDescriptor.anchor(top: topAnchor, left: friendProfileImage.rightAnchor, bottom: nil, right: rightAnchor, paddingTop: 15, paddingLeft: 10, paddingBottom: 0, paddingRight: 0, width: 0, height: profileImageWidth)
+
         // Collectible Image
         addSubview(collectibleImage)
-        collectibleImage.anchor(top: friendProfileImage.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 15, paddingLeft: 15, paddingBottom: 0, paddingRight: 15, width: 0, height: 200)
-        
-        addSubview(rarityBadge)
-        rarityBadge.anchor(top: collectibleImage.topAnchor, left: nil, bottom: nil, right: collectibleImage.rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 200, height: 25)
-        
-        
+        collectibleImage.anchor(top: friendProfileImage.bottomAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 15, paddingLeft: 15, paddingBottom: 0, paddingRight: 15, width: 80, height: 80)
+
+
+
         //Collectible Title
         addSubview(collectibleTitle)
-        collectibleTitle.anchor(top: collectibleImage.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 15, paddingBottom: 0, paddingRight: 15, width: 0, height: 30)
+        collectibleTitle.anchor(top: collectibleImage.topAnchor, left: collectibleImage.rightAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 15, paddingBottom: 0, paddingRight: 15, width: 0, height: 30)
+
+        addSubview(collectibleArtist)
+        collectibleArtist.anchor(top: collectibleTitle.bottomAnchor, left: collectibleImage.rightAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 15, paddingBottom: 0, paddingRight: 15, width: 0, height: 30)
+
+
+
+        
+        setupActionButtons()
+        
+        
+        
+//        setupActionButtons()
+//
+        
+    }
     
-        //Collectible Description
-        addSubview(collectibleDescription)
-        collectibleDescription.anchor(top: collectibleTitle.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 15, paddingBottom: 0, paddingRight: 15, width: 0, height: 0)
+    func setupActionButtons() {
+        let stackView = UIStackView(arrangedSubviews: [likeButton, commentButton])
+        
+        stackView.distribution = .fillEqually
+        
+        addSubview(stackView)
+        stackView.anchor(top: nil, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 15, paddingBottom: 0, paddingRight: 15, width: 0, height: 35)
+//        stackView.anchor(top: collectibleArtist.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 15, paddingLeft: 100, paddingBottom: 0, paddingRight: 100, width: 0, height: 60)
+        
+        addSubview(topDivider)
+        topDivider.anchor(top: nil, left: leftAnchor, bottom: stackView.topAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0.5)
+        
+        addSubview(bottomDivider)
+        bottomDivider.anchor(top: stackView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0.5)
     }
     
     required init?(coder: NSCoder) {
