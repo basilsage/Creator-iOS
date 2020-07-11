@@ -25,7 +25,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
                 self.present(navController, animated: true, completion: nil)
             }
             
-            return
+            return 
         }
         
         setupViewControllers()
