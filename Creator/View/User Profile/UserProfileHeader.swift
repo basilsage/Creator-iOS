@@ -27,7 +27,7 @@ class UserProfileHeader: UICollectionViewCell {
     
     let usernameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Raghav's Collection"
+        label.text = "raghav500"
         label.textAlignment = .center
         label.font = UIFont(name: "Futura", size: 20)
         return label

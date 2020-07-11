@@ -28,6 +28,8 @@
 		227A49312456047900C3E4E5 /* ArtistProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A49302456047900C3E4E5 /* ArtistProfileHeader.swift */; };
 		227A4936245612E600C3E4E5 /* ArtistProfileCollectibleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A4935245612E600C3E4E5 /* ArtistProfileCollectibleCell.swift */; };
 		227A8AAB24B8EE28007769FA /* CollectibleProfileFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A8AAA24B8EE28007769FA /* CollectibleProfileFooter.swift */; };
+		227A8AAD24B97E21007769FA /* CollectibleDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A8AAC24B97E21007769FA /* CollectibleDetailsTableViewCell.swift */; };
+		227A8AAF24B98B26007769FA /* asapRocky.gif in Resources */ = {isa = PBXBuildFile; fileRef = 227A8AAE24B98B26007769FA /* asapRocky.gif */; };
 		229B4B462457B57C005A34CF /* CollectibleProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229B4B452457B57C005A34CF /* CollectibleProfileHeader.swift */; };
 		229B4B482457B58B005A34CF /* CollectibleProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229B4B472457B58B005A34CF /* CollectibleProfileController.swift */; };
 		229B4B4A2457B5A1005A34CF /* CollectibleProfileLedgerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229B4B492457B5A0005A34CF /* CollectibleProfileLedgerCell.swift */; };
@@ -65,6 +67,8 @@
 		227A49302456047900C3E4E5 /* ArtistProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistProfileHeader.swift; sourceTree = "<group>"; };
 		227A4935245612E600C3E4E5 /* ArtistProfileCollectibleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistProfileCollectibleCell.swift; sourceTree = "<group>"; };
 		227A8AAA24B8EE28007769FA /* CollectibleProfileFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectibleProfileFooter.swift; sourceTree = "<group>"; };
+		227A8AAC24B97E21007769FA /* CollectibleDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectibleDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		227A8AAE24B98B26007769FA /* asapRocky.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = asapRocky.gif; sourceTree = "<group>"; };
 		229B4B452457B57C005A34CF /* CollectibleProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectibleProfileHeader.swift; sourceTree = "<group>"; };
 		229B4B472457B58B005A34CF /* CollectibleProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectibleProfileController.swift; sourceTree = "<group>"; };
 		229B4B492457B5A0005A34CF /* CollectibleProfileLedgerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectibleProfileLedgerCell.swift; sourceTree = "<group>"; };
@@ -102,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				2232F22F2459D374007603EA /* giphy.gif */,
+				227A8AAE24B98B26007769FA /* asapRocky.gif */,
 				22CA9223245A88A200F8E325 /* wildOut.gif */,
 				22CA9221245A816900F8E325 /* visualizer.gif */,
 			);
@@ -217,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				229B4B472457B58B005A34CF /* CollectibleProfileController.swift */,
+				227A8AAC24B97E21007769FA /* CollectibleDetailsTableViewCell.swift */,
 				229B4B452457B57C005A34CF /* CollectibleProfileHeader.swift */,
 				227A8AAA24B8EE28007769FA /* CollectibleProfileFooter.swift */,
 				229B4B492457B5A0005A34CF /* CollectibleProfileLedgerCell.swift */,
@@ -318,6 +324,7 @@
 				22CA9222245A816900F8E325 /* visualizer.gif in Resources */,
 				227A49092454CD9A00C3E4E5 /* Main.storyboard in Resources */,
 				22CA9224245A88A200F8E325 /* wildOut.gif in Resources */,
+				227A8AAF24B98B26007769FA /* asapRocky.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +388,7 @@
 				22D9921B24B506D40042C6DA /* DiscoverControllerCell.swift in Sources */,
 				227A8AAB24B8EE28007769FA /* CollectibleProfileFooter.swift in Sources */,
 				22D9921924B4D0480042C6DA /* DiscoverController.swift in Sources */,
+				227A8AAD24B97E21007769FA /* CollectibleDetailsTableViewCell.swift in Sources */,
 				227A492F2456040B00C3E4E5 /* ArtistProfileController.swift in Sources */,
 				22CA9220245A802400F8E325 /* PlayerViewController.swift in Sources */,
 				227A49042454CD9A00C3E4E5 /* SceneDelegate.swift in Sources */,

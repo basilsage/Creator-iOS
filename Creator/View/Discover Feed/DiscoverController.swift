@@ -75,6 +75,7 @@ class DiscoverController : UICollectionViewController, UICollectionViewDelegateF
     func didTapSeeMoreDetail() {
         print("Delegate recceived")
         let collectibleProfileController = CollectibleProfileController()
+        collectibleProfileController.modalPresentationStyle = .automatic
         present(collectibleProfileController, animated: true, completion: nil)
     }
     
