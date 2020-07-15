@@ -14,8 +14,7 @@ class CollectibleProfileHeader : UICollectionReusableView {
     lazy var exitButton : UIButton = {
         let eb = UIButton(type: .system)
         eb.setTitle("X", for: .normal)
-        eb.addTarget(self, action: #selector(exitButtonPressed), for: .touchUpInside)
-        
+        eb.addTarget(self, action: #selector(exitButtonPressed), for: .touchUpInside)        
         return eb
     }()
     
@@ -48,11 +47,11 @@ class CollectibleProfileHeader : UICollectionReusableView {
     let collectibleName : UILabel = {
         let an = UILabel()
         
-        let collectibleDetailsString = NSMutableAttributedString(string: "Poinsettia", attributes: [NSAttributedString.Key.font: UIFont(name: "Futura", size: 18), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 0, green: 0, blue: 0)])
+        let collectibleDetailsString = NSMutableAttributedString(string: "Poinsettia", attributes: [NSAttributedString.Key.font: UIFont(name: "Futura", size: 18) ?? UIFont.systemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 0, green: 0, blue: 0)])
                 
-        collectibleDetailsString.append(NSAttributedString(string: " | ", attributes: [NSAttributedString.Key.font: UIFont(name: "Futura", size: 18), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 0, green: 0, blue: 0)]))
+        collectibleDetailsString.append(NSAttributedString(string: " | ", attributes: [NSAttributedString.Key.font: UIFont(name: "Futura", size: 18) ?? UIFont.systemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 0, green: 0, blue: 0)]))
 
-        collectibleDetailsString.append(NSAttributedString(string: "Unreleased Track", attributes: [NSAttributedString.Key.font: UIFont(name: "Futura", size: 18), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 70, green: 69, blue: 70)]))
+        collectibleDetailsString.append(NSAttributedString(string: "Unreleased Track", attributes: [NSAttributedString.Key.font: UIFont(name: "Futura", size: 18) ?? UIFont.systemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 70, green: 69, blue: 70)]))
         
         an.attributedText = collectibleDetailsString
 //        an.font = UIFont(name: "Futura-Bold", size: 20)

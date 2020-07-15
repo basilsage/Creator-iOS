@@ -27,14 +27,9 @@ class UserProfilePhotoCell: UICollectionViewCell {
     
     let collectibleRarityAndCounts : UILabel = {
         let crac = UILabel()
-        crac.text = "rarity | counts"
-        
-        let collectibleDetailsString = NSMutableAttributedString(string: "Rare", attributes: [NSAttributedString.Key.font: UIFont(name: "Futura", size: 12), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 0, green: 0, blue: 0)])
-                
-        collectibleDetailsString.append(NSAttributedString(string: " | ", attributes: [NSAttributedString.Key.font: UIFont(name: "Futura", size: 12), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 0, green: 0, blue: 0)]))
-        
-        collectibleDetailsString.append(NSAttributedString(string: "One of 10,000", attributes: [NSAttributedString.Key.font: UIFont(name: "Futura", size: 12), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 70, green: 69, blue: 70)]))
-        
+        let collectibleDetailsString = NSMutableAttributedString(string: "Rare", attributes: [NSAttributedString.Key.font: UIFont(name: "Futura", size: 12) ?? UIFont.systemFont(ofSize: 12), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 0, green: 0, blue: 0)])
+        collectibleDetailsString.append(NSAttributedString(string: " | ", attributes: [NSAttributedString.Key.font: UIFont(name: "Futura", size: 12) ?? UIFont.systemFont(ofSize: 12), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 0, green: 0, blue: 0)]))
+        collectibleDetailsString.append(NSAttributedString(string: "One of 10,000", attributes: [NSAttributedString.Key.font: UIFont(name: "Futura", size: 12) ?? UIFont.systemFont(ofSize: 12), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 70, green: 69, blue: 70)]))
         crac.attributedText = collectibleDetailsString
         return crac
     }()

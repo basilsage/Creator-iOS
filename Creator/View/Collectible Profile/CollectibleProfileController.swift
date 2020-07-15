@@ -13,47 +13,23 @@ import AVFoundation
 
 class CollectibleProfileController : UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDataSource, UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return questions.count
-    }
-    
-    let questions = ["Medium", "Year", "Length"]
-    let answers = ["Video", "2020", "3:20"]
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellId, for: indexPath) as! CollectibleDetailsTableViewCell
-        cell.detailQuestion.text = questions[indexPath.row]
-        cell.detailAnswer.text = answers[indexPath.row]
-        return cell
-    }
-    
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    
     var detailsTableView : UITableView!
     var collectionView: UICollectionView!
-    
     var tableViewCellId = "tvCID"
     var collectionViewCellId = "cvCID"
     
-//    let videoView : UIView = {
-//        let vv = UIView()
-//        return vv
-//    }()
+    
+    
+
+    //MARK: UI Elements
     
     let videoView : UIImageView = {
         let playerGif = UIImageView()
         playerGif.backgroundColor = .red
         playerGif.contentMode = .scaleAspectFill
         playerGif.loadGif(name: "asapRocky.gif")
-        
         return playerGif
     }()
-    
-    
     
     let profileBackgroundView : UIScrollView = {
         let pbv = UIScrollView(frame: UIScreen.main.bounds)
@@ -65,7 +41,6 @@ class CollectibleProfileController : UIViewController, UICollectionViewDataSourc
         let eb = UIButton(type: .system)
         eb.setTitle("X", for: .normal)
         eb.addTarget(self, action: #selector(exitButtonPressed), for: .touchUpInside)
-        
         return eb
     }()
     
@@ -82,17 +57,11 @@ class CollectibleProfileController : UIViewController, UICollectionViewDataSourc
         self.dismiss(animated: true, completion: nil)
     }
     
-
-    
     let dollarsRaised: UILabel = {
         let label = UILabel()
-        
         let attributedText = NSMutableAttributedString(string: "Raised\n", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)])
-        
         attributedText.append(NSAttributedString(string: "$1,584", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14)]))
-        
         label.attributedText = attributedText
-        
         label.textAlignment = .left
         label.numberOfLines = 0
         return label
@@ -100,13 +69,9 @@ class CollectibleProfileController : UIViewController, UICollectionViewDataSourc
     
     let copiesLeft: UILabel = {
         let label = UILabel()
-        
         let attributedText = NSMutableAttributedString(string: "Copies Left\n", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)])
-        
         attributedText.append(NSAttributedString(string: "25", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14)]))
-        
         label.attributedText = attributedText
-        
         label.textAlignment = .left
         label.numberOfLines = 0
         return label
@@ -122,15 +87,10 @@ class CollectibleProfileController : UIViewController, UICollectionViewDataSourc
     
     let collectibleName : UILabel = {
         let an = UILabel()
-        
-        let collectibleDetailsString = NSMutableAttributedString(string: "Poinsettia", attributes: [NSAttributedString.Key.font: UIFont(name: "Futura", size: 18), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 0, green: 0, blue: 0)])
-                
-        collectibleDetailsString.append(NSAttributedString(string: " | ", attributes: [NSAttributedString.Key.font: UIFont(name: "Futura", size: 18), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 0, green: 0, blue: 0)]))
-
-        collectibleDetailsString.append(NSAttributedString(string: "Unreleased Track", attributes: [NSAttributedString.Key.font: UIFont(name: "Futura", size: 18), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 70, green: 69, blue: 70)]))
-        
+        let collectibleDetailsString = NSMutableAttributedString(string: "Poinsettia", attributes: [NSAttributedString.Key.font: UIFont(name: "Futura", size: 18) ?? UIFont.systemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 0, green: 0, blue: 0)])
+        collectibleDetailsString.append(NSAttributedString(string: " | ", attributes: [NSAttributedString.Key.font: UIFont(name: "Futura", size: 18) ?? UIFont.systemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 0, green: 0, blue: 0)]))
+        collectibleDetailsString.append(NSAttributedString(string: "Unreleased Track", attributes: [NSAttributedString.Key.font: UIFont(name: "Futura", size: 18) ?? UIFont.systemFont(ofSize: 18), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 70, green: 69, blue: 70)]))
         an.attributedText = collectibleDetailsString
-
         return an
     }()
     
@@ -178,22 +138,20 @@ class CollectibleProfileController : UIViewController, UICollectionViewDataSourc
         pl.text = "$20.00\nPer Share"
         pl.numberOfLines = 0
         pl.textAlignment = .center
-        
         return pl
     }()
     
     
     func getVideo() {
-        
         let videoURL = URL(string: "http://techslides.com/demos/sample-videos/small.3gp")
         let player = AVPlayer(url: videoURL!)
         let playerLayer = AVPlayerLayer(player: player)
         playerLayer.frame = self.videoView.bounds
         self.videoView.layer.addSublayer(playerLayer)
         player.play()
-
     }
     
+    //MARK: Initializer
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -210,7 +168,6 @@ class CollectibleProfileController : UIViewController, UICollectionViewDataSourc
 
         
         view.addSubview(profileBackgroundView)
-//        profileBackgroundView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         profileBackgroundView.contentSize = CGSize(width: view.frame.width, height: 6000)
         profileBackgroundView.isScrollEnabled = true
         
@@ -220,21 +177,13 @@ class CollectibleProfileController : UIViewController, UICollectionViewDataSourc
         profileBackgroundView.addSubview(artistName)
         artistName.anchor(top: profileBackgroundView.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 30, paddingLeft: 25, paddingBottom: 0, paddingRight: 0, width: 0, height: 30)
         
-        
-        
         profileBackgroundView.addSubview(collectibleName)
         collectibleName.anchor(top: artistName.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 15, paddingLeft: 25, paddingBottom: 0, paddingRight: 0, width: 0, height: 20)
 
-//        view.addSubview(collectiblePicture)
-//        collectiblePicture.layer.cornerRadius = 20
-//        collectiblePicture.anchor(top: collectibleName.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 25, paddingLeft: 25, paddingBottom: 0, paddingRight: 25, width: 0, height: 180)
-        
         view.addSubview(videoView)
         videoView.anchor(top: collectibleName.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 25, paddingLeft: 25, paddingBottom: 0, paddingRight: 25, width: 0, height: 180)
-//        getVideo()
         
         addAvailabilityStatsStackView()
-        
 
         view.addSubview(aboutHeaderLabel)
         aboutHeaderLabel.anchor(top: videoView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 80, paddingLeft: 25, paddingBottom: 0, paddingRight: 25, width: 0, height: 25)
@@ -265,7 +214,6 @@ class CollectibleProfileController : UIViewController, UICollectionViewDataSourc
         permanentBuySection.addSubview(buyButton)
         buyButton.anchor(top: permanentBuySection.topAnchor, left: nil, bottom: permanentBuySection.bottomAnchor, right: permanentBuySection.rightAnchor, paddingTop: 20, paddingLeft: 0, paddingBottom: 20, paddingRight: 20, width: 200, height: 0)
         
-        
          self.navigationController?.navigationBar.tintColor = UIColor.black
         
     }
@@ -276,44 +224,44 @@ class CollectibleProfileController : UIViewController, UICollectionViewDataSourc
         view.addSubview(availabilityStatsStackView)
         availabilityStatsStackView.anchor(top: videoView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 10, paddingLeft: 25, paddingBottom: 0, paddingRight: 25, width: 0, height: 50)
     }
-    
 
-
+    //Replace with backend eventually
     var collectorProfileImages : [UIImage?] = [UIImage(named: "benProfilePic.png"),UIImage(named: "mickProfilePic.png"),UIImage(named: "tylerProfilePic.png"),UIImage(named: "brooksProfilePic.png"),UIImage(named: "benProfilePic.png"),UIImage(named: "mickProfilePic.png"),UIImage(named: "tylerProfilePic.png"),UIImage(named: "brooksProfilePic.png"),UIImage(named: "benProfilePic.png"),UIImage(named: "benProfilePic.png")]
     var collectorUsername = ["b45", "raghav500", "djtb23","andyWilms","CoCoWinter", "JCole", "DaBaby","Uzi","Kuzi","Snoozy"]
     
+
+    //MARK: TableView
+    
+    let questions = ["Medium", "Year", "Length"]
+    let answers = ["Video", "2020", "3:20"]
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellId, for: indexPath) as! CollectibleDetailsTableViewCell
+        cell.detailQuestion.text = questions[indexPath.row]
+        cell.detailAnswer.text = answers[indexPath.row]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return questions.count
+    }
+    
+    
+    //MARK: Collection View
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionViewCellId, for: indexPath) as! CollectibleProfileLedgerCell
         cell.collectorProfileImages.image = collectorProfileImages[indexPath.row]
         cell.collectorUsername.text = collectorUsername[indexPath.row]
-        
         return cell
     }
-
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (view.frame.width - 1) / 2
         return CGSize(width: width, height: width)
-    }
-    
-}
-
-extension UIStackView {
-    func addHorizontalSeparators(color : UIColor) {
-        var i = self.arrangedSubviews.count
-        while i >= 0 {
-            let separator = createSeparator(color: color)
-            insertArrangedSubview(separator, at: i)
-            separator.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1).isActive = true
-            i -= 1
-        }
-    }
-
-    private func createSeparator(color : UIColor) -> UIView {
-        let separator = UIView()
-        separator.heightAnchor.constraint(equalToConstant: 1).isActive = true
-        separator.backgroundColor = color
-        return separator
     }
 }

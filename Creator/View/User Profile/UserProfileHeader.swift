@@ -11,12 +11,7 @@ import Firebase
 
 class UserProfileHeader: UICollectionViewCell {
     
-    fileprivate func setupFollowStyle() {
-        self.editProfileFollowButton.setTitle("Follow", for: .normal)
-        self.editProfileFollowButton.backgroundColor = UIColor.rgb(red: 17, green: 154, blue: 237)
-        self.editProfileFollowButton.setTitleColor(.white, for: .normal)
-        self.editProfileFollowButton.layer.borderColor = UIColor(white: 0, alpha: 0.2).cgColor
-    }
+    //MARK: UI Elements
     
     let profileImageViewButton: UIButton = {
         let pivb = UIButton(type: .system)
@@ -35,13 +30,9 @@ class UserProfileHeader: UICollectionViewCell {
     
     let postsLabel: UILabel = {
         let label = UILabel()
-        
         let attributedText = NSMutableAttributedString(string: "22\n", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14)])
-        
         attributedText.append(NSAttributedString(string: "collectibles", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]))
-        
         label.attributedText = attributedText
-        
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
@@ -49,13 +40,9 @@ class UserProfileHeader: UICollectionViewCell {
     
     let followersLabel: UILabel = {
         let label = UILabel()
-        
         let attributedText = NSMutableAttributedString(string: "$7.6k\n", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14)])
-        
         attributedText.append(NSAttributedString(string: "collection value", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]))
-        
         label.attributedText = attributedText
-        
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
@@ -63,13 +50,9 @@ class UserProfileHeader: UICollectionViewCell {
     
     let followingLabel: UILabel = {
         let label = UILabel()
-        
         let attributedText = NSMutableAttributedString(string: "426\n", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14)])
-        
         attributedText.append(NSAttributedString(string: "friends", attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)]))
-        
         label.attributedText = attributedText
-        
         label.numberOfLines = 0
         label.textAlignment = .center
         return label
@@ -86,6 +69,8 @@ class UserProfileHeader: UICollectionViewCell {
         return button
     }()
     
+    
+    //MARK: Initializer
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -101,9 +86,7 @@ class UserProfileHeader: UICollectionViewCell {
         usernameLabel.anchor(top: profileImageViewButton.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 15, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 40)
         
         setupUserStatsView()
-        
-//        addSubview(editProfileFollowButton)
-//        editProfileFollowButton.anchor(top: postsLabel.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 12, paddingLeft: 15, paddingBottom: 0, paddingRight: 15, width: 0, height: 34)
+
     }
     
     fileprivate func setupUserStatsView() {

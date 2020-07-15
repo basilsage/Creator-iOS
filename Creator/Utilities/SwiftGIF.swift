@@ -8,6 +8,8 @@
 import UIKit
 import ImageIO
 
+// Adds ability to add play gifs in app
+
 extension UIImageView {
 
     public func loadGif(name: String) {

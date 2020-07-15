@@ -17,6 +17,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         
         self.delegate = self
          
+        // If no user logged in, present Login Controller
         if Auth.auth().currentUser == nil {
             DispatchQueue.main.async {
                 let loginController = LoginController()
@@ -24,32 +25,29 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
                 navController.modalPresentationStyle = .fullScreen
                 self.present(navController, animated: true, completion: nil)
             }
-            
             return 
         }
-        
         setupViewControllers()
-        
         tabBar.tintColor = .black
-
     }
     
     func setupViewControllers() {
+        
+        // Home Feed
         let homeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "homeUnfilled"), selectedImage: #imageLiteral(resourceName: "homeFilled"), rootViewController: HomeFeedController())
         
-        //search
+        // Discovery Section
         let discoverNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "globeUnfilled"), selectedImage: #imageLiteral(resourceName: "globeFilled"), rootViewController: DiscoverController(collectionViewLayout: UICollectionViewFlowLayout()))
 
+        // User Profile
         let profileNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "profileUnfilled"), selectedImage: #imageLiteral(resourceName: "profileFilled"), rootViewController: UserProfileController())
         
         viewControllers = [homeNavController, discoverNavController, profileNavController]
         
-        //modify tab bar item insets
+        //Center tab bar item insets
         guard let items = tabBar.items else { return }
-        
         for item in items {
             item.imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -4, right: 0)
-            
         }
     }
     

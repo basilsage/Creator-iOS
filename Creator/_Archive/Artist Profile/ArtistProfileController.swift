@@ -16,9 +16,7 @@ class ArtistProfileController : UITableViewController {
         
         tableView.register(ArtistProfileCollectibleCell.self, forCellReuseIdentifier: cellId)
         tableView.register(ArtistProfileHeader.self, forHeaderFooterViewReuseIdentifier: "headerId")
-        
          self.navigationController?.navigationBar.tintColor = UIColor.black
-        
         createFormattedStrings(nameDictionary: collectibleNames, collectibleTypeDictionaries: collectibleTypes)
     }
     
@@ -27,8 +25,7 @@ class ArtistProfileController : UITableViewController {
     var collectibleNames = ["Poinsettia", "SON OF HARLEM", "FLACKO FAN CLUB","BLVCK SCVLE", "Babushka Boi", "RIP YAM$", "Behind the Scenes - On Tour w/ Rocky", "LIMITED EDITION MUSIC VIDEO","Studio Notes","PRETTY ASS PICTURE HAHA"]
     var collectibleTypes = ["Unreleased Track","Short Film", "VIP Pass", "Lookbook", "Demo", "Charity Pin", "Video", "Video", "Text", "Picture"]
     var collectibleRarities = ["Ultra Rare","Ultra Rare","Ultra Rare","Ultra Rare","Ultra Rare","Ultra Rare","Ultra Rare","Ultra Rare","Ultra Rare","Ultra Rare"]
-    var availabilityStatuses = ["$49.99", "$82.04", "$189.22","$16.16", "$25.88","$19.28", "$75.44","$24.20", "$11.18","$26.18"]
-    
+    var availabilityStatuses = ["$49.99", "$82.04", "$189.22","$16.16", "$25.88","$19.28", "$75.44","$24.20", "$11.18","$26.18"]    
     var priceChartImages : [UIImage?] = [UIImage(named: "greenSparkline1.png"),UIImage(named: "redSparkline1.png"),UIImage(named: "greenSparkline2.png"),UIImage(named: "redSparkline2.png"),UIImage(named: "greenSparkline1.png"),UIImage(named: "redSparkline1.png"),UIImage(named: "greenSparkline2.png"),UIImage(named: "redSparkline2.png"),UIImage(named: "greenSparkline1.png"),UIImage(named: "redSparkline1.png")]
     
     

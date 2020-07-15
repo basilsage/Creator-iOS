@@ -11,12 +11,13 @@ import Firebase
 
 class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    //MARK: UI Elements
+    
     let titleLabel: UILabel = {
         let tl = UILabel()
         tl.text = "Creator"
         tl.font = UIFont.systemFont(ofSize: 50)
         tl.textAlignment = .center
-        
         return tl
     }()
     
@@ -26,7 +27,6 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
         tf.backgroundColor = UIColor(white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
         tf.font = UIFont.systemFont(ofSize: 14)
-        
         return tf
     }()
     
@@ -37,7 +37,6 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
         tf.backgroundColor = UIColor(white: 0, alpha: 0.03)
         tf.borderStyle = .roundedRect
         tf.font = UIFont.systemFont(ofSize: 14)
-
         return tf
     }()
     
@@ -45,16 +44,24 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
         let button = UIButton(type: .system)
         button.setTitle("Sign Up", for: .normal)
         button.backgroundColor = UIColor.rgb(red: 17, green: 154, blue: 237)
-        
         button.layer.cornerRadius = 5
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         button.setTitleColor(.white, for: .normal)
-        
         button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
-        
         return button
     }()
     
+    let alreadyHaveAccountButton: UIButton = {
+        let button = UIButton(type: .system)
+        let attributedTitle = NSMutableAttributedString(string: "Already have an account?  ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        attributedTitle.append(NSAttributedString(string: "Sign In", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 17, green: 154, blue: 237)
+            ]))
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        button.addTarget(self, action: #selector(handleAlreadyHaveAccount), for: .touchUpInside)
+        return button
+    }()
+    
+    //MARK: Button Functions
     @objc func handleSignUp() {
         guard let email = emailTextField.text, !email.isEmpty else { return }
         guard let password = passwordTextField.text, !password.isEmpty else { return }
@@ -67,28 +74,11 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
             }
             
             print("Successfully created user:", user?.user.uid ?? "")
-            
             guard let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController else {return}
             mainTabBarController.setupViewControllers()
-            
             self.dismiss(animated: true, completion: nil)
-        
         })
     }
-    
-    let alreadyHaveAccountButton: UIButton = {
-        let button = UIButton(type: .system)
-        
-        let attributedTitle = NSMutableAttributedString(string: "Already have an account?  ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        
-        attributedTitle.append(NSAttributedString(string: "Sign In", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.rgb(red: 17, green: 154, blue: 237)
-            ]))
-        
-        button.setAttributedTitle(attributedTitle, for: .normal)
-        
-        button.addTarget(self, action: #selector(handleAlreadyHaveAccount), for: .touchUpInside)
-        return button
-    }()
     
     @objc func handleAlreadyHaveAccount() {
         _ = navigationController?.popViewController(animated: true)

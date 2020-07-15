@@ -13,41 +13,20 @@ import UIKit
 
 class DiscoverController : UICollectionViewController, UICollectionViewDelegateFlowLayout, DiscoverCellDelegate {
     
-    
     let cellId = "cellId"
+    
+    //MARK: Initializer
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.collectionView.register(DiscoverControllerCell.self, forCellWithReuseIdentifier: cellId)
         
-        print("Hello, discover")
-        
-        
         collectionView.isPagingEnabled = true
-        
-        // what does this do? Delete and see what happens
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        
-        
-        // moves below the nav bar
-        edgesForExtendedLayout = []
-        
-        
-        
-        
+        collectionView.translatesAutoresizingMaskIntoConstraints = false // what does this do? Delete and see what happens
+        edgesForExtendedLayout = [] // moves below the nav bar
     }
     
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: view.frame.height)
-    }
-    
-    
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
-    }
-    
+    //MARK: CollectionView Delegate Methods
     var colors : [UIColor] = [.blue, .red]
     var collectibleImages : [UIImage] = [#imageLiteral(resourceName: "moreFatter.2jpg"), #imageLiteral(resourceName: "yeProfile")]
     
@@ -58,13 +37,19 @@ class DiscoverController : UICollectionViewController, UICollectionViewDelegateF
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: view.frame.height)
+    }
     
     override init(collectionViewLayout layout: UICollectionViewLayout) {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
-        
         super.init(collectionViewLayout: layout)
     }
     
@@ -72,6 +57,7 @@ class DiscoverController : UICollectionViewController, UICollectionViewDelegateF
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: Present Collectible Detail Controller
     func didTapSeeMoreDetail() {
         print("Delegate recceived")
         let collectibleProfileController = CollectibleProfileController()

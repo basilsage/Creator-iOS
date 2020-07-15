@@ -56,8 +56,7 @@ class DiscoverControllerCell : UICollectionViewCell {
         smdb.addTarget(self, action: #selector(seeMoreDetailsButtonPressed), for: .allTouchEvents)
         smdb.titleLabel?.numberOfLines = 2
         smdb.titleLabel?.textAlignment = .center
-        smdb.tintColor = .white
-        
+        smdb.tintColor = .white        
         return smdb
     }()
     

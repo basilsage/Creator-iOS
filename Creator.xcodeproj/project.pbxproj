@@ -171,10 +171,6 @@
 				227A49162454CE3C00C3E4E5 /* SignUpController.swift */,
 				227A4934245604A200C3E4E5 /* Home Feed */,
 				22D9921724B4D0330042C6DA /* Discover Feed */,
-				227A49322456047C00C3E4E5 /* Artist Profile */,
-				227A492E2456040B00C3E4E5 /* ArtistProfileController.swift */,
-				227A49302456047900C3E4E5 /* ArtistProfileHeader.swift */,
-				227A4935245612E600C3E4E5 /* ArtistProfileCollectibleCell.swift */,
 				227A49332456048800C3E4E5 /* User Profile */,
 				229B4B442457B54F005A34CF /* Collectible Profile */,
 				22CA921E245A801200F8E325 /* Player */,
@@ -186,6 +182,9 @@
 		227A49222454D2D800C3E4E5 /* _Archive */ = {
 			isa = PBXGroup;
 			children = (
+				227A8AAA24B8EE28007769FA /* CollectibleProfileFooter.swift */,
+				229B4B452457B57C005A34CF /* CollectibleProfileHeader.swift */,
+				227A49322456047C00C3E4E5 /* Artist Profile */,
 				227A49072454CD9A00C3E4E5 /* Main.storyboard */,
 				227A490C2454CD9D00C3E4E5 /* LaunchScreen.storyboard */,
 			);
@@ -195,6 +194,9 @@
 		227A49322456047C00C3E4E5 /* Artist Profile */ = {
 			isa = PBXGroup;
 			children = (
+				227A492E2456040B00C3E4E5 /* ArtistProfileController.swift */,
+				227A49302456047900C3E4E5 /* ArtistProfileHeader.swift */,
+				227A4935245612E600C3E4E5 /* ArtistProfileCollectibleCell.swift */,
 			);
 			path = "Artist Profile";
 			sourceTree = "<group>";
@@ -223,8 +225,6 @@
 			children = (
 				229B4B472457B58B005A34CF /* CollectibleProfileController.swift */,
 				227A8AAC24B97E21007769FA /* CollectibleDetailsTableViewCell.swift */,
-				229B4B452457B57C005A34CF /* CollectibleProfileHeader.swift */,
-				227A8AAA24B8EE28007769FA /* CollectibleProfileFooter.swift */,
 				229B4B492457B5A0005A34CF /* CollectibleProfileLedgerCell.swift */,
 			);
 			path = "Collectible Profile";
