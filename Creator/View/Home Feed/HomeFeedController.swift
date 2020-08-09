@@ -12,7 +12,7 @@ import UIKit
 class HomeFeedController : UITableViewController {
     
     let cellId = "cellId"
-    // hello
+    // hello2
     
     override func viewDidLoad() {
         super.viewDidLoad()
