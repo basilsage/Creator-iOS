@@ -74,10 +74,31 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
             }
             
             print("Successfully created user:", user?.user.uid ?? "")
+            
+            self.saveUserToDatabase()
             guard let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController else {return}
             mainTabBarController.setupViewControllers()
             self.dismiss(animated: true, completion: nil)
         })
+    }
+    
+    func saveUserToDatabase() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let dateCreated = NSDate().timeIntervalSince1970
+        guard let email = Auth.auth().currentUser?.email else { return }
+        
+    //
+        let usersRef = Database.database().reference().child("users").child(uid)
+        let values = ["creationDate": dateCreated, "email" : email, "userType" : "FAN"] as [String : Any]
+
+        usersRef.updateChildValues(values) { (err, ref) in
+            if let err = err {
+                print("Failed to save user to DB", err)
+                return
+            }
+
+            print("Successfully saved user to DB")
+        }
     }
     
     @objc func handleAlreadyHaveAccount() {

@@ -8,9 +8,13 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 class PlayerViewController : UIViewController {
 
+    var player : AVAudioPlayer?
+    var collectiblePurchasedBool : Int = 0
+    
     let backgroundView : UIView = {
         let bv = UIView()
         bv.backgroundColor = .white
@@ -35,31 +39,72 @@ class PlayerViewController : UIViewController {
         return friendGif
     }()
     
-    let shareButton: UIButton = {
+    
+    
+    let purchasedBoolButton: UIButton = {
         let shareButton = UIButton(type: .system)
-        shareButton.setTitle("Share", for: .normal)
-        
-        shareButton.layer.cornerRadius = 5
-        shareButton.titleLabel?.font = UIFont(name: "Futura", size: 20)
-        shareButton.setTitleColor(.black, for: .normal)
-        
-        shareButton.addTarget(self, action: #selector(handleShareButtonPressed), for: .touchUpInside)
+        shareButton.setTitle("Purchase", for: .normal)
+        shareButton.addTarget(self, action: #selector(purchasedBoolButtonPressed), for: .touchUpInside)
         
         return shareButton
     }()
     
-    @objc func handleShareButtonPressed() {
-        view.addSubview(friendGif)
-        friendGif.anchor(top: view.topAnchor, left: nil, bottom: nil, right: view.rightAnchor, paddingTop: 100, paddingLeft: 0, paddingBottom: 0, paddingRight: 15, width: 100, height: 150)
-        friendGif.layer.cornerRadius = 10
+    @objc func purchasedBoolButtonPressed() {
+        if collectiblePurchasedBool == 0 {
+            collectiblePurchasedBool = 1
+        } else {
+            collectiblePurchasedBool = 0
+        }
     }
     
-    let playButton : UIImageView = {
-        let playButton = UIImageView()
-        playButton.image = UIImage(named: "playButton")
+    let playButton : UIButton = {
+        let playButton = UIButton()
+        playButton.setImage(#imageLiteral(resourceName: "playButton"), for: .normal)
         playButton.contentMode = .scaleAspectFit
+        playButton.addTarget(self, action: #selector(playButtonPressed), for: .touchUpInside)
         return playButton
     }()
+    
+    @objc func playButtonPressed() {
+        
+        print("pbp")
+        
+        if collectiblePurchasedBool == 0 {
+            return
+        } else {
+            
+            if let player = player, player.isPlaying {
+                player.stop()
+            } else {
+                // setup player and play
+                
+                let urlString = Bundle.main.path(forResource: "sickoMode", ofType: "mp3")
+                
+                do {
+                    try AVAudioSession.sharedInstance().setMode(.default)
+                    try AVAudioSession.sharedInstance().setActive(true, options: .notifyOthersOnDeactivation)
+                    
+                    guard let urlString = urlString else { return }
+                    
+                    
+                    player = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: urlString))
+                    
+                    guard let player = player else { return }
+                    
+                    player.play()
+                    
+                    
+                } catch  {
+                    print("Something went wrong")
+                }
+                
+            }
+        }
+        
+        
+        
+        
+    }
     
     let fastForwardButton : UIImageView = {
         let fastForwardButton = UIImageView()
@@ -86,8 +131,8 @@ class PlayerViewController : UIViewController {
         view.addSubview(backgroundView)
         backgroundView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
-        view.addSubview(shareButton)
-        shareButton.anchor(top: view.topAnchor, left: nil, bottom: nil, right: view.rightAnchor, paddingTop: 30, paddingLeft: 0, paddingBottom: 0, paddingRight: 15, width: 60, height: 30)
+        view.addSubview(purchasedBoolButton)
+        purchasedBoolButton.anchor(top: view.topAnchor, left: nil, bottom: nil, right: view.rightAnchor, paddingTop: 30, paddingLeft: 0, paddingBottom: 0, paddingRight: 15, width: 80, height: 30)
         
         view.addSubview(playerGif)
         playerGif.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 350, paddingLeft: 15, paddingBottom: 0, paddingRight: 15, width: 0, height: 50)
@@ -99,9 +144,17 @@ class PlayerViewController : UIViewController {
         view.addSubview(stackView)
         stackView.anchor(top: playerGif.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 280, paddingLeft: 100, paddingBottom: 0, paddingRight: 100, width: 0, height: 40)
         
-    }
-    
         
-}
+        var mp3Player: AVAudioPlayer?
+        
+        let path = Bundle.main.path(forResource: "mySong.mp3", ofType:nil)!
+        let url = URL(fileURLWithPath: path)
 
-    
+        do {
+            mp3Player = try AVAudioPlayer(contentsOf: url)
+            mp3Player?.play()
+        } catch {
+            // couldn't load file :(
+        }
+    }
+}

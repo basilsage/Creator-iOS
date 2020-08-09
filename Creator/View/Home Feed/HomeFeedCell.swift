@@ -35,14 +35,6 @@ class HomeFeedCell : UITableViewCell {
         return ci
     }()
     
-    let rarityBadge : UILabel = {
-        let rb = UILabel()
-        rb.backgroundColor = UIColor.rgb(red: 246, green: 215, blue: 67).withAlphaComponent(0.95)
-        rb.font = UIFont(name: "Futura", size: 11)
-        rb.textAlignment = .center
-        return rb
-    }()
-    
     let collectibleTitle : UILabel = {
         let cd = UILabel()
         cd.textColor = .black
@@ -64,6 +56,16 @@ class HomeFeedCell : UITableViewCell {
         return cd
     }()
     
+    let rarityBadge: UILabel = {
+        let label = UILabel()
+        let attributedText = NSMutableAttributedString(string: "Very Rare\n", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 9)])
+        attributedText.append(NSAttributedString(string: "1 of 100", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 7)]))
+        label.attributedText = attributedText
+        label.textAlignment = .center
+        label.backgroundColor = UIColor.rgb(red: 246, green: 215, blue: 67).withAlphaComponent(0.95)
+        label.numberOfLines = 0
+        return label
+    }()
     
     let topDivider : UIView = {
         let td = UIView()
@@ -125,6 +127,14 @@ class HomeFeedCell : UITableViewCell {
 
         addSubview(collectibleArtist)
         collectibleArtist.anchor(top: collectibleTitle.bottomAnchor, left: collectibleImage.rightAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 15, paddingBottom: 0, paddingRight: 15, width: 0, height: 30)
+        
+        addSubview(collectibleDescription)
+        collectibleDescription.anchor(top: collectibleImage.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 15, paddingBottom: 0, paddingRight: 15, width: 0, height: 50)
+        
+        addSubview(rarityBadge)
+        rarityBadge.anchor(top: collectibleImage.topAnchor, left: nil, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 0, paddingBottom: 0, paddingRight: 15, width: 40, height: 40)
+        rarityBadge.clipsToBounds = true
+        rarityBadge.layer.cornerRadius = 10
 
         setupActionButtons()
         

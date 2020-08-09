@@ -34,6 +34,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     func setupViewControllers() {
         
         // Home Feed
+        
         let homeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "homeUnfilled"), selectedImage: #imageLiteral(resourceName: "homeFilled"), rootViewController: HomeFeedController())
         
         // Discovery Section

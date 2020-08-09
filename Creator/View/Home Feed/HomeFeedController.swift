@@ -58,20 +58,21 @@ class HomeFeedController : UITableViewController {
     // Format headlines on home feed
     func setupAttributedHomeFeedActionString() {
         formatAttributedHomeFeedActionString(nameOfActor: "Tyler Satoda", actionOfActor: " purchased a collectible")
-        formatAttributedHomeFeedActionString(nameOfActor: "A$AP Rocky", actionOfActor: " issued a collectible")
-        formatAttributedHomeFeedActionString(nameOfActor: "Shane", actionOfActor: "'s collectible reached all-time high price")
-        formatAttributedHomeFeedActionString(nameOfActor: "Ye", actionOfActor: " issued a collectible")
+        formatAttributedHomeFeedActionString(nameOfActor: "A$AP Rocky", actionOfActor: " purchased a collectible")
+        formatAttributedHomeFeedActionString(nameOfActor: "Shane", actionOfActor: " purchased a collectible")
+        formatAttributedHomeFeedActionString(nameOfActor: "Ye", actionOfActor: " purchased a collectible")
     }
     
     //MARK: Feed Data, to be replaced by backend eventually
     var friendProfilePics : [UIImage?] = [#imageLiteral(resourceName: "brooksProfilePic"),#imageLiteral(resourceName: "rockyProfile"),#imageLiteral(resourceName: "benProfilePic"), UIImage(named: "yeProfile.jpg")]
     var friendActions : [NSMutableAttributedString] = []
-    var collectibleImages : [UIImage?] = [#imageLiteral(resourceName: "drippin"),#imageLiteral(resourceName: "asapCollectible1"),UIImage(named: "mac2.png"),UIImage(named: "ye.png")]
-    var collectibleTitles = ["Day Ones", "Poinsettia", "Little Chair","Ultraviolet"]
-    var collectibleTypes = ["VIP Pass", "Unreleased Track", "Demo", "Unreleased Track"]
-    var collectibleArtists = ["Drippinsopretty", "A$AP Rocky", "Mac DeMarco","Kanye West"]
-    var rarityDescription = ["VERY RARE - One of 100 Copies","RARE - One of 10,000 Copies" , "ULTRA RARE - One of 10 Copies","RARE - One of 10,000 Copies"]
-    var collectibleDescriptions = ["For my day ones 🤧. Y'all have been with me from the beginning and I want to keep my fam close. this VIP pass entitles you to free concerts / backstage access to my concerts forever. Admit One ☠️", "What's good, my newest track is available exclusively via Creator. Only 10k copies will ever be sold. Get yours today. I love you forever 💚💜 - Pretty Flacko", "There is value to scarcity / ownership that other platforms cannot offer. Ownership confers benefits of social proof and financial upside. 1st edition concept, not really possible w/ streaming platforms.", "Some artists have brand sensitivity based on exclusivity, e.g. I have this and you do not. This is not conducive to a lot of existing platforms, where scarcity is not technologically possible."]
+    var collectibleImages : [UIImage?] = [#imageLiteral(resourceName: "drippin"),#imageLiteral(resourceName: "drippin"),#imageLiteral(resourceName: "drippin"),#imageLiteral(resourceName: "drippin")]
+    var collectibleTitles = ["Zesty", "Zesty", "Zesty","Zesty"]
+    var collectibleTypes = ["Jam Session", "Jam Session", "Jam Session","Jam Session"]
+    var collectibleArtists = ["More Fatter", "More Fatter", "More Fatter","More Fatter"]
+    
+    var rarityDescription = ["VERY RARE - One of 100 Copies","RARE\n1 / 10k" , "ULTRA RARE - One of 10 Copies","RARE - One of 10,000 Copies"]
+    var collectibleDescriptions = ["Hi Theo!! I'm so excited to listen. I'm your #1 fan. Love from South Carolina. Please come tour here one day!","Hi Theo!! I'm so excited to listen. I'm your #1 fan. Love from South Carolina. Please come tour here one day!","Hi Theo!! I'm so excited to listen. I'm your #1 fan. Love from South Carolina. Please come tour here one day!","Hi Theo!! I'm so excited to listen. I'm your #1 fan. Love from South Carolina. Please come tour here one day!"]
     
     
     //MARK: TableView Required Methods
@@ -83,7 +84,6 @@ class HomeFeedController : UITableViewController {
         cell.friendActionDescriptor.attributedText = friendActions[indexPath.row]
         cell.collectibleImage.image = collectibleImages[indexPath.row]
         cell.collectibleTitle.attributedText = collectibleTitleAndTypes[indexPath.row]
-        cell.rarityBadge.text = rarityDescription[indexPath.row]
         cell.collectibleDescription.text = collectibleDescriptions[indexPath.row]
         cell.collectibleArtist.text = collectibleArtists[indexPath.row]
         cell.selectionStyle = .none
@@ -98,6 +98,6 @@ class HomeFeedController : UITableViewController {
 
     // Determines height of cell
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+        return 280
     }
 }

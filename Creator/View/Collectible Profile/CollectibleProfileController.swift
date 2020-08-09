@@ -10,6 +10,7 @@ import Foundation
 import AVKit
 import UIKit
 import AVFoundation
+import Firebase
 
 class CollectibleProfileController : UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDataSource, UITableViewDelegate {
     
@@ -17,19 +18,28 @@ class CollectibleProfileController : UIViewController, UICollectionViewDataSourc
     var collectionView: UICollectionView!
     var tableViewCellId = "tvCID"
     var collectionViewCellId = "cvCID"
-    
-    
-    
 
     //MARK: UI Elements
     
-    let videoView : UIImageView = {
-        let playerGif = UIImageView()
-        playerGif.backgroundColor = .red
-        playerGif.contentMode = .scaleAspectFill
-        playerGif.loadGif(name: "asapRocky.gif")
-        return playerGif
+    let videoView : UIButton = {
+        let videoView = UIButton()
+        videoView.setImage(#imageLiteral(resourceName: "travisScott4"), for: .normal)
+        videoView.contentMode = .scaleAspectFit
+        videoView.addTarget(self, action: #selector(videoViewButtonPressed), for: .touchUpInside)
+        return videoView
     }()
+    
+    @objc func videoViewButtonPressed() {
+        if let path = Bundle.main.path(forResource: "sickoMode", ofType: "mp4") {
+            let video = AVPlayer(url: URL(fileURLWithPath: path))
+            let videoPlayer = AVPlayerViewController()
+            videoPlayer.player = video
+            
+            present(videoPlayer, animated: true, completion: {
+                video.play()
+            })
+        }
+    }
     
     let profileBackgroundView : UIScrollView = {
         let pbv = UIScrollView(frame: UIScreen.main.bounds)
@@ -111,6 +121,24 @@ class CollectibleProfileController : UIViewController, UICollectionViewDataSourc
         return ahl
     }()
     
+    var artistMessageHeaderLabel : UILabel = {
+        let amhl = UILabel()
+        amhl.textColor = UIColor.black
+        amhl.text = "Message from the Artist"
+        amhl.font = UIFont.boldSystemFont(ofSize: 20)
+        return amhl
+    }()
+    
+    var artistMessageLabel : UILabel = {
+        let aml = UILabel()
+        aml.textColor = UIColor.black
+        aml.text = "For my day ones 🤧. Y'all have been with me from the beginning and I want to keep my fam close. this VIP pass entitles you to free concerts / backstage access to my concerts forever. Admit One ☠️"
+        aml.numberOfLines = 0
+        aml.font = UIFont.boldSystemFont(ofSize: 12)
+        return aml
+    }()
+    
+    
     var verifiedOwnersLabel : UILabel = {
         let vol = UILabel()
         vol.textColor = UIColor.black
@@ -130,8 +158,44 @@ class CollectibleProfileController : UIViewController, UICollectionViewDataSourc
         bb.backgroundColor = .black
         bb.setTitle("Buy Collectible", for: .normal)
         bb.setTitleColor(.white, for: .normal)
+        bb.addTarget(self, action: #selector(buyButtonPressed), for: .touchUpInside)
         return bb
     }()
+    
+    @objc func buyButtonPressed() {
+        
+        let collectibleId = "00000000000001"
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        //add child to collectibles parent
+        let datePurchased = NSDate().timeIntervalSince1970
+        let collectiblesRef = Database.database().reference().child("collectibles").child(collectibleId).child("owners").child(uid)
+        let ownerValues = ["purchaseDate": datePurchased] as [String : Any]
+
+        collectiblesRef.updateChildValues(ownerValues) { (err, ref) in
+            if let err = err {
+                print("Failed to complete purchase", err)
+                return
+            }
+
+            print("Successfully completed purrchase")
+        }
+        
+        //add child to users parent
+        let usersRef = Database.database().reference().child("users").child(uid).child("collectiblesOwned").child(collectibleId)
+        let userValues = ["owned": 1] as [String : Any]
+        
+        usersRef.updateChildValues(userValues) { (err, ref) in
+            if let err = err {
+                print("Failed to complete purchase", err)
+                return
+            }
+
+            print("Successfully completed purrchase")
+        }
+        
+        
+    }
     
     let priceLabel : UILabel = {
         let pl = UILabel()
@@ -182,6 +246,8 @@ class CollectibleProfileController : UIViewController, UICollectionViewDataSourc
 
         view.addSubview(videoView)
         videoView.anchor(top: collectibleName.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 25, paddingLeft: 25, paddingBottom: 0, paddingRight: 25, width: 0, height: 180)
+        videoView.layer.cornerRadius = 20
+        videoView.layer.masksToBounds = true
         
         addAvailabilityStatsStackView()
 
@@ -191,8 +257,14 @@ class CollectibleProfileController : UIViewController, UICollectionViewDataSourc
         view.addSubview(aboutText)
         aboutText.anchor(top: aboutHeaderLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 20, paddingLeft: 25, paddingBottom: 0, paddingRight: 25, width: 0, height: 200)
         
+        view.addSubview(artistMessageHeaderLabel)
+        artistMessageHeaderLabel.anchor(top: aboutText.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 80, paddingLeft: 25, paddingBottom: 0, paddingRight: 25, width: 0, height: 25)
+
+        view.addSubview(artistMessageLabel)
+        artistMessageLabel.anchor(top: artistMessageHeaderLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 20, paddingLeft: 25, paddingBottom: 0, paddingRight: 25, width: 0, height: 200)
+        
         view.addSubview(verifiedOwnersLabel)
-        verifiedOwnersLabel.anchor(top: aboutText.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 20, paddingLeft: 25, paddingBottom: 0, paddingRight: 25, width: 0, height: 15)
+        verifiedOwnersLabel.anchor(top: artistMessageLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 20, paddingLeft: 25, paddingBottom: 0, paddingRight: 25, width: 0, height: 15)
         
         view.addSubview(collectionView)
         collectionView.anchor(top: verifiedOwnersLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 10, width: 0, height: 100)

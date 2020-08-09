@@ -17,7 +17,7 @@
 		227A49182454CE3C00C3E4E5 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A49162454CE3C00C3E4E5 /* SignUpController.swift */; };
 		227A49192454CE3C00C3E4E5 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A49172454CE3C00C3E4E5 /* LoginController.swift */; };
 		227A491B2454D10F00C3E4E5 /* HomeFeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A491A2454D10F00C3E4E5 /* HomeFeedController.swift */; };
-		227A491E2454D1AE00C3E4E5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A491D2454D1AE00C3E4E5 /* Extensions.swift */; };
+		227A491E2454D1AE00C3E4E5 /* UIUtilityMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A491D2454D1AE00C3E4E5 /* UIUtilityMethods.swift */; };
 		227A49202454D26A00C3E4E5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 227A491F2454D26A00C3E4E5 /* GoogleService-Info.plist */; };
 		227A49242454D45100C3E4E5 /* HomeFeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A49232454D45100C3E4E5 /* HomeFeedCell.swift */; };
 		227A4927245520AC00C3E4E5 /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A4926245520AC00C3E4E5 /* UserProfileController.swift */; };
@@ -39,6 +39,9 @@
 		22CA9224245A88A200F8E325 /* wildOut.gif in Resources */ = {isa = PBXBuildFile; fileRef = 22CA9223245A88A200F8E325 /* wildOut.gif */; };
 		22D9921924B4D0480042C6DA /* DiscoverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9921824B4D0480042C6DA /* DiscoverController.swift */; };
 		22D9921B24B506D40042C6DA /* DiscoverControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D9921A24B506D40042C6DA /* DiscoverControllerCell.swift */; };
+		22E6C35224DFBF1C00459038 /* mySong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 22E6C35124DFBF1C00459038 /* mySong.mp3 */; };
+		22E6C35524E082CE00459038 /* sickoMode.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 22E6C35424E082CE00459038 /* sickoMode.mp3 */; };
+		22E6C35824E08B4D00459038 /* sickoMode.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 22E6C35724E08B4D00459038 /* sickoMode.mp4 */; };
 		88B11CBC7CC55E6309C2E2E3 /* Pods_Creator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D10C601A78AADFF17B80E3E /* Pods_Creator.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,7 +59,7 @@
 		227A49162454CE3C00C3E4E5 /* SignUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		227A49172454CE3C00C3E4E5 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		227A491A2454D10F00C3E4E5 /* HomeFeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeedController.swift; sourceTree = "<group>"; };
-		227A491D2454D1AE00C3E4E5 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		227A491D2454D1AE00C3E4E5 /* UIUtilityMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIUtilityMethods.swift; sourceTree = "<group>"; };
 		227A491F2454D26A00C3E4E5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		227A49232454D45100C3E4E5 /* HomeFeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeedCell.swift; sourceTree = "<group>"; };
 		227A4926245520AC00C3E4E5 /* UserProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
@@ -78,6 +81,9 @@
 		22CA9223245A88A200F8E325 /* wildOut.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = wildOut.gif; sourceTree = "<group>"; };
 		22D9921824B4D0480042C6DA /* DiscoverController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverController.swift; sourceTree = "<group>"; };
 		22D9921A24B506D40042C6DA /* DiscoverControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverControllerCell.swift; sourceTree = "<group>"; };
+		22E6C35124DFBF1C00459038 /* mySong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mySong.mp3; sourceTree = "<group>"; };
+		22E6C35424E082CE00459038 /* sickoMode.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sickoMode.mp3; sourceTree = "<group>"; };
+		22E6C35724E08B4D00459038 /* sickoMode.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = sickoMode.mp4; path = ../../../../../../../../Downloads/sickoMode.mp4; sourceTree = "<group>"; };
 		7D10C601A78AADFF17B80E3E /* Pods_Creator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Creator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A04B01D93A7806F05045C52F /* Pods-Creator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Creator.release.xcconfig"; path = "Target Support Files/Pods-Creator/Pods-Creator.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -136,7 +142,7 @@
 			children = (
 				227A491F2454D26A00C3E4E5 /* GoogleService-Info.plist */,
 				227A490F2454CD9D00C3E4E5 /* Info.plist */,
-				2232F22E2459D36D007603EA /* GIFs */,
+				22E6C35324DFBF2200459038 /* Media */,
 				227A491C2454D19E00C3E4E5 /* Utilities */,
 				227A49222454D2D800C3E4E5 /* _Archive */,
 				227A49212454D2B700C3E4E5 /* View */,
@@ -156,7 +162,7 @@
 			children = (
 				227A49012454CD9A00C3E4E5 /* AppDelegate.swift */,
 				227A49032454CD9A00C3E4E5 /* SceneDelegate.swift */,
-				227A491D2454D1AE00C3E4E5 /* Extensions.swift */,
+				227A491D2454D1AE00C3E4E5 /* UIUtilityMethods.swift */,
 				2232F22C2459CF2B007603EA /* SwiftGIF.swift */,
 			);
 			path = Utilities;
@@ -248,6 +254,17 @@
 			path = "Discover Feed";
 			sourceTree = "<group>";
 		};
+		22E6C35324DFBF2200459038 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				2232F22E2459D36D007603EA /* GIFs */,
+				22E6C35724E08B4D00459038 /* sickoMode.mp4 */,
+				22E6C35124DFBF1C00459038 /* mySong.mp3 */,
+				22E6C35424E082CE00459038 /* sickoMode.mp3 */,
+			);
+			path = Media;
+			sourceTree = "<group>";
+		};
 		A429B3B7F4F25C6230EC9066 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -322,7 +339,10 @@
 				227A49202454D26A00C3E4E5 /* GoogleService-Info.plist in Resources */,
 				227A490B2454CD9D00C3E4E5 /* Assets.xcassets in Resources */,
 				22CA9222245A816900F8E325 /* visualizer.gif in Resources */,
+				22E6C35824E08B4D00459038 /* sickoMode.mp4 in Resources */,
+				22E6C35524E082CE00459038 /* sickoMode.mp3 in Resources */,
 				227A49092454CD9A00C3E4E5 /* Main.storyboard in Resources */,
+				22E6C35224DFBF1C00459038 /* mySong.mp3 in Resources */,
 				22CA9224245A88A200F8E325 /* wildOut.gif in Resources */,
 				227A8AAF24B98B26007769FA /* asapRocky.gif in Resources */,
 			);
@@ -400,7 +420,7 @@
 				227A4936245612E600C3E4E5 /* ArtistProfileCollectibleCell.swift in Sources */,
 				229B4B462457B57C005A34CF /* CollectibleProfileHeader.swift in Sources */,
 				227A492D2455FFB800C3E4E5 /* UserProfilePhotoCell.swift in Sources */,
-				227A491E2454D1AE00C3E4E5 /* Extensions.swift in Sources */,
+				227A491E2454D1AE00C3E4E5 /* UIUtilityMethods.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
