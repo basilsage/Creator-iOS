@@ -6,6 +6,8 @@
 //  Copyright © 2020 DJ Satoda. All rights reserved.
 //
 
+// this is cool
+
 import XCTest
 
 class UserModelTests: XCTestCase {
