@@ -11,33 +11,33 @@ import Foundation
 struct Comment : Equatable {
     let user: User
     // The time this comment was created in milliseconds since Epoch
-    let createdAtSeconds: UInt64
+    let createdAtSeconds: NSNumber
     let body: String
-    let reactions: [Reaction]
+//    let reactions : NSArray
 
-    
-    init(user: User, createdAtSeconds: UInt64, body: String, reactions: [Reaction]) {
+    init(user: User, createdAtSeconds: NSNumber, body: String) {
         self.user = user
         self.createdAtSeconds = createdAtSeconds
         self.body = body
-        self.reactions = reactions
+//        self.reactions = reactions
     }
     
     /** Returns dictionary representation of Comment. Used for storing in firebase. */
-    func toDictionary() -> Dictionary<String, Any> {
+    func toDictionary() -> NSDictionary {
         return [
-            "user": user,
+            "user": user.toDictionary(),
             "body": body,
-            "createdAtSeconds" : createdAtSeconds,
-            "reactions" : reactions
+            "createdAtSeconds" : createdAtSeconds
+//            "reactions" : reactions
         ]
     }
+
     
     static func == (lhs: Comment, rhs: Comment) -> Bool {
           return lhs.user == rhs.user &&
             lhs.createdAtSeconds == rhs.createdAtSeconds &&
-            lhs.body == rhs.body &&
-            lhs.reactions == rhs.reactions
+            lhs.body == rhs.body
+//            && lhs.reactions == rhs.reactions
       }
 }
 
@@ -55,8 +55,8 @@ struct Reaction : Equatable {
     }
     
     /** Returns dictionary representation of Comment. Used for storing in firebase. */
-    func toDictionary() -> Dictionary<String, Any> {
-        return ["user" : user,
+    func toDictionary() -> NSDictionary {
+        return ["user" : user.toDictionary(),
                 "type" : type.rawValue]
     }
 }

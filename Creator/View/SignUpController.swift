@@ -83,15 +83,18 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
     }
     
     func saveUserToDatabase() {
+        
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let dateCreated = NSDate().timeIntervalSince1970
         guard let email = Auth.auth().currentUser?.email else { return }
         
+        let newUser = User(userName: email, firstName: "Raghav", lastName: "Sehtia", type: User.UserType.FAN)
+        
     //
         let usersRef = Database.database().reference().child("users").child(uid)
-        let values = ["creationDate": dateCreated, "email" : email, "userType" : "FAN"] as [String : Any]
+//        let values = ["creationDate": dateCreated, "email" : email, "userType" : "FAN"] as [String : Any]
 
-        usersRef.updateChildValues(values) { (err, ref) in
+        usersRef.updateChildValues(newUser.toDictionary() as! [AnyHashable : Any]) { (err, ref) in
             if let err = err {
                 print("Failed to save user to DB", err)
                 return

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class HomeFeedCell : UITableViewCell {
     
@@ -99,10 +100,44 @@ class HomeFeedCell : UITableViewCell {
     //MARK: Button Functions
     @objc func likeButtonPressed() {
         print("Like Button Pressed") //eventually add like to backend
+        let currentUser = User(userName: "myUsername", firstName: "DJ", lastName: "Raghav", type: User.UserType.FAN)
+        let myReaction = Reaction(user: currentUser, type: Reaction.ReactionType.LIKE)
+        let usersRef = Database.database().reference().child("feedItems").child("rossPurchasedACollectibleToday").child("reactions")
+        let userRefAutoChild = usersRef.childByAutoId()
+        
+        userRefAutoChild.updateChildValues(myReaction.toDictionary() as! [AnyHashable : Any]) { (err, ref) in
+            if let err = err {
+                
+                print("Failed to save reaction", err)
+                return
+            }
+
+            print("Successfully saved reaction to DB")
+            
+        }
+        
     }
     
     @objc func commentButtonPressed() {
         print("Comment Button Pressed") //eventually present comment view controller
+        
+        let currentUser = User(userName: "myUsername", firstName: "DJ", lastName: "Raghav", type: User.UserType.FAN)
+        var myComment = Comment(user: currentUser, createdAtSeconds: NSNumber(value: NSDate().timeIntervalSince1970), body: "Hello, world")
+//        var myComment = Comment(user: currentUser, createdAtSeconds: NSNumber(value: NSDate().timeIntervalSince1970), body: "Hello, world", reactions: [])
+        
+        let usersRef = Database.database().reference().child("comments").child("collectible_0000001")
+    
+        
+        usersRef.updateChildValues(myComment.toDictionary() as! [AnyHashable : Any]) { (err, ref) in
+            if let err = err {
+                print(type(of: myComment))
+                print("Failed to save user to DB", err)
+                return
+            }
+
+            print("Successfully saved user to DB")
+            print(type(of: myComment))
+        }
     }
     
     //MARK: Initializers
