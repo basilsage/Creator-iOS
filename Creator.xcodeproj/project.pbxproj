@@ -42,8 +42,24 @@
 		22E6C35224DFBF1C00459038 /* mySong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 22E6C35124DFBF1C00459038 /* mySong.mp3 */; };
 		22E6C35524E082CE00459038 /* sickoMode.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 22E6C35424E082CE00459038 /* sickoMode.mp3 */; };
 		22E6C35824E08B4D00459038 /* sickoMode.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 22E6C35724E08B4D00459038 /* sickoMode.mp4 */; };
+		417C1AD624EF9B1E005D0E08 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417C1AC324EDFA18005D0E08 /* User.swift */; };
+		417C1AD724EF9B23005D0E08 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417C1AC624EE0C0F005D0E08 /* Comment.swift */; };
+		417C1AD924F09F32005D0E08 /* UserModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417C1AD824F09F32005D0E08 /* UserModelTests.swift */; };
+		417C1ADD24F1E113005D0E08 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417C1AC324EDFA18005D0E08 /* User.swift */; };
+		417C1ADE24F1E117005D0E08 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417C1AC624EE0C0F005D0E08 /* Comment.swift */; };
+		417C1AE124F1EBBC005D0E08 /* CommentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417C1ADB24F0A069005D0E08 /* CommentTests.swift */; };
 		88B11CBC7CC55E6309C2E2E3 /* Pods_Creator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D10C601A78AADFF17B80E3E /* Pods_Creator.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		417C1AD124EF5CC5005D0E08 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 227A48F62454CD9A00C3E4E5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 227A48FD2454CD9A00C3E4E5;
+			remoteInfo = Creator;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		17C6DC01622C2FEE853FB70B /* Pods-Creator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Creator.debug.xcconfig"; path = "Target Support Files/Pods-Creator/Pods-Creator.debug.xcconfig"; sourceTree = "<group>"; };
@@ -83,7 +99,13 @@
 		22D9921A24B506D40042C6DA /* DiscoverControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverControllerCell.swift; sourceTree = "<group>"; };
 		22E6C35124DFBF1C00459038 /* mySong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mySong.mp3; sourceTree = "<group>"; };
 		22E6C35424E082CE00459038 /* sickoMode.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sickoMode.mp3; sourceTree = "<group>"; };
-		22E6C35724E08B4D00459038 /* sickoMode.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = sickoMode.mp4; path = ../../../../../../../../Downloads/sickoMode.mp4; sourceTree = "<group>"; };
+		22E6C35724E08B4D00459038 /* sickoMode.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = sickoMode.mp4; path = ../../../../../Downloads/sickoMode.mp4; sourceTree = "<group>"; };
+		417C1AC324EDFA18005D0E08 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		417C1AC624EE0C0F005D0E08 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		417C1ACC24EF5CC5005D0E08 /* CreatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CreatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		417C1AD024EF5CC5005D0E08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		417C1AD824F09F32005D0E08 /* UserModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelTests.swift; sourceTree = "<group>"; };
+		417C1ADB24F0A069005D0E08 /* CommentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTests.swift; sourceTree = "<group>"; };
 		7D10C601A78AADFF17B80E3E /* Pods_Creator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Creator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A04B01D93A7806F05045C52F /* Pods-Creator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Creator.release.xcconfig"; path = "Target Support Files/Pods-Creator/Pods-Creator.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,6 +116,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				88B11CBC7CC55E6309C2E2E3 /* Pods_Creator.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		417C1AC924EF5CC5005D0E08 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				227A49002454CD9A00C3E4E5 /* Creator */,
+				417C1ACD24EF5CC5005D0E08 /* CreatorTests */,
 				227A48FF2454CD9A00C3E4E5 /* Products */,
 				A429B3B7F4F25C6230EC9066 /* Pods */,
 				0E172B0484B249480E3DCCFB /* Frameworks */,
@@ -133,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				227A48FE2454CD9A00C3E4E5 /* Creator.app */,
+				417C1ACC24EF5CC5005D0E08 /* CreatorTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -140,6 +171,7 @@
 		227A49002454CD9A00C3E4E5 /* Creator */ = {
 			isa = PBXGroup;
 			children = (
+				417C1AC524EE0B93005D0E08 /* DataModels */,
 				227A491F2454D26A00C3E4E5 /* GoogleService-Info.plist */,
 				227A490F2454CD9D00C3E4E5 /* Info.plist */,
 				22E6C35324DFBF2200459038 /* Media */,
@@ -265,6 +297,33 @@
 			path = Media;
 			sourceTree = "<group>";
 		};
+		417C1AC524EE0B93005D0E08 /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+				417C1AC324EDFA18005D0E08 /* User.swift */,
+				417C1AC624EE0C0F005D0E08 /* Comment.swift */,
+			);
+			path = DataModels;
+			sourceTree = "<group>";
+		};
+		417C1ACD24EF5CC5005D0E08 /* CreatorTests */ = {
+			isa = PBXGroup;
+			children = (
+				417C1ADA24F09F44005D0E08 /* DataModelsTests */,
+				417C1AD024EF5CC5005D0E08 /* Info.plist */,
+			);
+			path = CreatorTests;
+			sourceTree = "<group>";
+		};
+		417C1ADA24F09F44005D0E08 /* DataModelsTests */ = {
+			isa = PBXGroup;
+			children = (
+				417C1AD824F09F32005D0E08 /* UserModelTests.swift */,
+				417C1ADB24F0A069005D0E08 /* CommentTests.swift */,
+			);
+			path = DataModelsTests;
+			sourceTree = "<group>";
+		};
 		A429B3B7F4F25C6230EC9066 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,18 +355,40 @@
 			productReference = 227A48FE2454CD9A00C3E4E5 /* Creator.app */;
 			productType = "com.apple.product-type.application";
 		};
+		417C1ACB24EF5CC5005D0E08 /* CreatorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 417C1AD324EF5CC5005D0E08 /* Build configuration list for PBXNativeTarget "CreatorTests" */;
+			buildPhases = (
+				417C1AC824EF5CC5005D0E08 /* Sources */,
+				417C1AC924EF5CC5005D0E08 /* Frameworks */,
+				417C1ACA24EF5CC5005D0E08 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				417C1AD224EF5CC5005D0E08 /* PBXTargetDependency */,
+			);
+			name = CreatorTests;
+			productName = CreatorTests;
+			productReference = 417C1ACC24EF5CC5005D0E08 /* CreatorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		227A48F62454CD9A00C3E4E5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1140;
+				LastSwiftUpdateCheck = 1160;
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "DJ Satoda";
 				TargetAttributes = {
 					227A48FD2454CD9A00C3E4E5 = {
 						CreatedOnToolsVersion = 11.4.1;
+					};
+					417C1ACB24EF5CC5005D0E08 = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = 227A48FD2454CD9A00C3E4E5;
 					};
 				};
 			};
@@ -325,6 +406,7 @@
 			projectRoot = "";
 			targets = (
 				227A48FD2454CD9A00C3E4E5 /* Creator */,
+				417C1ACB24EF5CC5005D0E08 /* CreatorTests */,
 			);
 		};
 /* End PBXProject section */
@@ -345,6 +427,13 @@
 				22E6C35224DFBF1C00459038 /* mySong.mp3 in Resources */,
 				22CA9224245A88A200F8E325 /* wildOut.gif in Resources */,
 				227A8AAF24B98B26007769FA /* asapRocky.gif in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		417C1ACA24EF5CC5005D0E08 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +486,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				417C1ADD24F1E113005D0E08 /* User.swift in Sources */,
 				2232F22D2459CF2B007603EA /* SwiftGIF.swift in Sources */,
 				229B4B4A2457B5A1005A34CF /* CollectibleProfileLedgerCell.swift in Sources */,
 				227A49022454CD9A00C3E4E5 /* AppDelegate.swift in Sources */,
@@ -417,6 +507,7 @@
 				227A49312456047900C3E4E5 /* ArtistProfileHeader.swift in Sources */,
 				227A492B2455FF9700C3E4E5 /* UserProfileHeader.swift in Sources */,
 				227A49192454CE3C00C3E4E5 /* LoginController.swift in Sources */,
+				417C1ADE24F1E117005D0E08 /* Comment.swift in Sources */,
 				227A4936245612E600C3E4E5 /* ArtistProfileCollectibleCell.swift in Sources */,
 				229B4B462457B57C005A34CF /* CollectibleProfileHeader.swift in Sources */,
 				227A492D2455FFB800C3E4E5 /* UserProfilePhotoCell.swift in Sources */,
@@ -424,7 +515,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		417C1AC824EF5CC5005D0E08 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				417C1AD624EF9B1E005D0E08 /* User.swift in Sources */,
+				417C1AE124F1EBBC005D0E08 /* CommentTests.swift in Sources */,
+				417C1AD724EF9B23005D0E08 /* Comment.swift in Sources */,
+				417C1AD924F09F32005D0E08 /* UserModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		417C1AD224EF5CC5005D0E08 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 227A48FD2454CD9A00C3E4E5 /* Creator */;
+			targetProxy = 417C1AD124EF5CC5005D0E08 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		227A49072454CD9A00C3E4E5 /* Main.storyboard */ = {
@@ -598,6 +708,46 @@
 			};
 			name = Release;
 		};
+		417C1AD424EF5CC5005D0E08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = CreatorTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Creator.CreatorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Creator.app/Creator";
+			};
+			name = Debug;
+		};
+		417C1AD524EF5CC5005D0E08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = CreatorTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Creator.CreatorTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Creator.app/Creator";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -615,6 +765,15 @@
 			buildConfigurations = (
 				227A49132454CD9D00C3E4E5 /* Debug */,
 				227A49142454CD9D00C3E4E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		417C1AD324EF5CC5005D0E08 /* Build configuration list for PBXNativeTarget "CreatorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				417C1AD424EF5CC5005D0E08 /* Debug */,
+				417C1AD524EF5CC5005D0E08 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
