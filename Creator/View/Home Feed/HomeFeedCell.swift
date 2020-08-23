@@ -97,6 +97,7 @@ class HomeFeedCell : UITableViewCell {
         return cb
     }()
     
+    
     //MARK: Button Functions
     @objc func likeButtonPressed() {
         print("Like Button Pressed") //eventually add like to backend
@@ -117,6 +118,8 @@ class HomeFeedCell : UITableViewCell {
         }
         
     }
+    
+    //DJ TO CLEAN UP
     
     @objc func commentButtonPressed() {
         print("Comment Button Pressed") //eventually present comment view controller
