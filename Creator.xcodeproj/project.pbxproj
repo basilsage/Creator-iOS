@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		2232F22D2459CF2B007603EA /* SwiftGIF.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2232F22C2459CF2B007603EA /* SwiftGIF.swift */; };
 		2232F2302459D374007603EA /* giphy.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2232F22F2459D374007603EA /* giphy.gif */; };
+		22389C2424F33F7D004A5635 /* CommentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22389C2324F33F7D004A5635 /* CommentController.swift */; };
+		22389C2624F33F8F004A5635 /* CommentControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22389C2524F33F8F004A5635 /* CommentControllerCell.swift */; };
+		22389C2824F34577004A5635 /* CommentControllerCellHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22389C2724F34577004A5635 /* CommentControllerCellHeader.swift */; };
 		227A49022454CD9A00C3E4E5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A49012454CD9A00C3E4E5 /* AppDelegate.swift */; };
 		227A49042454CD9A00C3E4E5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227A49032454CD9A00C3E4E5 /* SceneDelegate.swift */; };
 		227A49092454CD9A00C3E4E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 227A49072454CD9A00C3E4E5 /* Main.storyboard */; };
@@ -65,6 +68,9 @@
 		17C6DC01622C2FEE853FB70B /* Pods-Creator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Creator.debug.xcconfig"; path = "Target Support Files/Pods-Creator/Pods-Creator.debug.xcconfig"; sourceTree = "<group>"; };
 		2232F22C2459CF2B007603EA /* SwiftGIF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftGIF.swift; sourceTree = "<group>"; };
 		2232F22F2459D374007603EA /* giphy.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = giphy.gif; sourceTree = "<group>"; };
+		22389C2324F33F7D004A5635 /* CommentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentController.swift; sourceTree = "<group>"; };
+		22389C2524F33F8F004A5635 /* CommentControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentControllerCell.swift; sourceTree = "<group>"; };
+		22389C2724F34577004A5635 /* CommentControllerCellHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentControllerCellHeader.swift; sourceTree = "<group>"; };
 		227A48FE2454CD9A00C3E4E5 /* Creator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Creator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		227A49012454CD9A00C3E4E5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		227A49032454CD9A00C3E4E5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -148,6 +154,16 @@
 			path = GIFs;
 			sourceTree = "<group>";
 		};
+		22389C2224F33F6A004A5635 /* Comment Controller */ = {
+			isa = PBXGroup;
+			children = (
+				22389C2324F33F7D004A5635 /* CommentController.swift */,
+				22389C2524F33F8F004A5635 /* CommentControllerCell.swift */,
+				22389C2724F34577004A5635 /* CommentControllerCellHeader.swift */,
+			);
+			path = "Comment Controller";
+			sourceTree = "<group>";
+		};
 		227A48F52454CD9A00C3E4E5 = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +224,7 @@
 				227A49172454CE3C00C3E4E5 /* LoginController.swift */,
 				227A49162454CE3C00C3E4E5 /* SignUpController.swift */,
 				227A4934245604A200C3E4E5 /* Home Feed */,
+				22389C2224F33F6A004A5635 /* Comment Controller */,
 				22D9921724B4D0330042C6DA /* Discover Feed */,
 				227A49332456048800C3E4E5 /* User Profile */,
 				229B4B442457B54F005A34CF /* Collectible Profile */,
@@ -492,8 +509,10 @@
 				227A49022454CD9A00C3E4E5 /* AppDelegate.swift in Sources */,
 				227A491B2454D10F00C3E4E5 /* HomeFeedController.swift in Sources */,
 				22B1F83B245A769B003A364A /* CongratulationsViewController.swift in Sources */,
+				22389C2824F34577004A5635 /* CommentControllerCellHeader.swift in Sources */,
 				227A49292455214B00C3E4E5 /* MainTabBarController.swift in Sources */,
 				227A49242454D45100C3E4E5 /* HomeFeedCell.swift in Sources */,
+				22389C2424F33F7D004A5635 /* CommentController.swift in Sources */,
 				229B4B482457B58B005A34CF /* CollectibleProfileController.swift in Sources */,
 				22D9921B24B506D40042C6DA /* DiscoverControllerCell.swift in Sources */,
 				227A8AAB24B8EE28007769FA /* CollectibleProfileFooter.swift in Sources */,
@@ -502,6 +521,7 @@
 				227A492F2456040B00C3E4E5 /* ArtistProfileController.swift in Sources */,
 				22CA9220245A802400F8E325 /* PlayerViewController.swift in Sources */,
 				227A49042454CD9A00C3E4E5 /* SceneDelegate.swift in Sources */,
+				22389C2624F33F8F004A5635 /* CommentControllerCell.swift in Sources */,
 				227A4927245520AC00C3E4E5 /* UserProfileController.swift in Sources */,
 				227A49182454CE3C00C3E4E5 /* SignUpController.swift in Sources */,
 				227A49312456047900C3E4E5 /* ArtistProfileHeader.swift in Sources */,

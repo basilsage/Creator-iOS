@@ -10,7 +10,13 @@ import Foundation
 import UIKit
 import Firebase
 
+protocol HomeFeedCellDelegate {
+    func didTapCommentButton()
+}
+
 class HomeFeedCell : UITableViewCell {
+    
+    var delegate : HomeFeedCellDelegate?
     
     //MARK: UI Elements
     
@@ -119,28 +125,24 @@ class HomeFeedCell : UITableViewCell {
         
     }
     
-    //DJ TO CLEAN UP
-    
     @objc func commentButtonPressed() {
-        print("Comment Button Pressed") //eventually present comment view controller
+        print("Comment button pressed, passing to delegate") //eventually present comment view controller
+        delegate?.didTapCommentButton()
         
-        let currentUser = User(userName: "myUsername", firstName: "DJ", lastName: "Raghav", type: User.UserType.FAN)
-        var myComment = Comment(user: currentUser, createdAtSeconds: NSNumber(value: NSDate().timeIntervalSince1970), body: "Hello, world")
-//        var myComment = Comment(user: currentUser, createdAtSeconds: NSNumber(value: NSDate().timeIntervalSince1970), body: "Hello, world", reactions: [])
         
-        let usersRef = Database.database().reference().child("comments").child("collectible_0000001")
-    
-        
-        usersRef.updateChildValues(myComment.toDictionary() as! [AnyHashable : Any]) { (err, ref) in
-            if let err = err {
-                print(type(of: myComment))
-                print("Failed to save user to DB", err)
-                return
-            }
-
-            print("Successfully saved user to DB")
-            print(type(of: myComment))
-        }
+//        let currentUser = User(userName: "myUsername", firstName: "DJ", lastName: "Raghav", type: User.UserType.FAN)
+//        var myComment = Comment(user: currentUser, createdAtSeconds: NSNumber(value: NSDate().timeIntervalSince1970), body: "Hello, world")
+//
+//        let usersRef = Database.database().reference().child("comments").child("collectible_0000001")
+//
+//        usersRef.updateChildValues(myComment.toDictionary() as! [AnyHashable : Any]) { (err, ref) in
+//            if let err = err {
+//                print("Failed to save comment to DB", err)
+//                return
+//            }
+//
+//            print("Successfully saved comment to DB")
+//        }
     }
     
     //MARK: Initializers

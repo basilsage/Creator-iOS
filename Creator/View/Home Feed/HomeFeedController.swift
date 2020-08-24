@@ -9,10 +9,9 @@
 import Foundation
 import UIKit
 
-class HomeFeedController : UITableViewController {
+class HomeFeedController : UITableViewController, HomeFeedCellDelegate {
     
     let cellId = "cellId"
-    // hello3
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +78,7 @@ class HomeFeedController : UITableViewController {
     //MARK: TableView Required Methods
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! HomeFeedCell
-        
+        cell.delegate = self
         cell.isUserInteractionEnabled = true
         cell.friendProfileImage.image = friendProfilePics[indexPath.row]
         cell.friendActionDescriptor.attributedText = friendActions[indexPath.row]
@@ -100,5 +99,15 @@ class HomeFeedController : UITableViewController {
     // Determines height of cell
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 280
+    }
+    
+    //MARK: Protocol Methods
+    
+    func didTapCommentButton() {
+        print("Delegate received")
+        let commentController = CommentController()
+        navigationController?.pushViewController(commentController, animated: true)
+//        commentController.modalPresentationStyle = .automatic
+//        present(commentController, animated: true, completion: nil)
     }
 }
