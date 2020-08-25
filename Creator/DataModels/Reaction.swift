@@ -9,12 +9,20 @@
 import Foundation
 
 struct Reaction : Equatable {
+
+    // Currently based on hash of userName and reaction type.
+    private var _id: String!
+      var id: String {
+          return _id
+      }
+    
     let user: User
     let type: ReactionType
     
     init(user: User, type: ReactionType) {
         self.user = user
         self.type = type
+        self._id = createUniqueId()
     }
     
     enum ReactionType : String {
@@ -22,8 +30,20 @@ struct Reaction : Equatable {
     }
     
     /** Returns dictionary representation of Comment. Used for storing in firebase. */
-    func toDictionary() -> NSDictionary {
+    func toDictionary() -> Dictionary<String, Any> {
         return ["user" : user.toDictionary(),
                 "type" : type.rawValue]
     }
+    
+    /**
+     * Returns a unique id based on the hash of the userName and reaction type.
+     *
+     * This way this unique id is created means a user can only have one type of reaction on a specific item.
+     * E.g. User "beeteem" can only like feed item X, not like and love feedItem X.
+     */
+    func createUniqueId() -> String {
+        let userNameReaction = user.userName + type.rawValue
+        return String(userNameReaction.hashValue)
+    }
+    
 }

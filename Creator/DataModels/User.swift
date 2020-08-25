@@ -29,7 +29,7 @@ struct User : Equatable {
         self._id = createUniqueUserId()
     }
     
-    func toDictionary() -> NSDictionary  {
+    func toDictionary() -> Dictionary<String, Any>  {
         return [
             "id" : self.id,
             "userName" : self.userName,

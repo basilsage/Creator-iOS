@@ -23,7 +23,7 @@ class ReactionTests: XCTestCase {
         
         let reaction = Reaction(user: user, type: Reaction.ReactionType.LIKE)
         
-        XCTAssertEqual(reaction.toDictionary()["user"] as? NSDictionary, user.toDictionary(), "user must be included in toDictionary")
+        XCTAssertEqual(reaction.toDictionary()["user"] as? NSDictionary, user.toDictionary() as NSDictionary, "user must be included in toDictionary")
     }
     
     func testReaction_isEquatable() {
