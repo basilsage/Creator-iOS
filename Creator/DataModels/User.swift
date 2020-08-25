@@ -29,8 +29,6 @@ struct User : Equatable {
         self._id = createUniqueUserId()
     }
     
-    // TODO(sehtia): check if non-strings need to be stored in firebase).
-    
     func toDictionary() -> NSDictionary  {
         return [
             "id" : self.id,

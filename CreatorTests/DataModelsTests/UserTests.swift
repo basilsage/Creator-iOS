@@ -10,7 +10,7 @@
 
 import XCTest
 
-class UserModelTests: XCTestCase {
+class UserTests: XCTestCase {
 
     func testUserDataModel_toDictionary_includesUsername() throws {
         let user = User(userName: "ragst3r", firstName: "raghav", lastName: "sehtia", type: User.UserType.FAN)

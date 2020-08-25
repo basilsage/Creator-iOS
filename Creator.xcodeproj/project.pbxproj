@@ -47,10 +47,13 @@
 		22E6C35824E08B4D00459038 /* sickoMode.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 22E6C35724E08B4D00459038 /* sickoMode.mp4 */; };
 		417C1AD624EF9B1E005D0E08 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417C1AC324EDFA18005D0E08 /* User.swift */; };
 		417C1AD724EF9B23005D0E08 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417C1AC624EE0C0F005D0E08 /* Comment.swift */; };
-		417C1AD924F09F32005D0E08 /* UserModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417C1AD824F09F32005D0E08 /* UserModelTests.swift */; };
+		417C1AD924F09F32005D0E08 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417C1AD824F09F32005D0E08 /* UserTests.swift */; };
 		417C1ADD24F1E113005D0E08 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417C1AC324EDFA18005D0E08 /* User.swift */; };
 		417C1ADE24F1E117005D0E08 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417C1AC624EE0C0F005D0E08 /* Comment.swift */; };
 		417C1AE124F1EBBC005D0E08 /* CommentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417C1ADB24F0A069005D0E08 /* CommentTests.swift */; };
+		417C1AE324F4AB6F005D0E08 /* Reaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417C1AE224F4AB6F005D0E08 /* Reaction.swift */; };
+		417C1AE424F4AB7E005D0E08 /* Reaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417C1AE224F4AB6F005D0E08 /* Reaction.swift */; };
+		417C1AE724F4AB9B005D0E08 /* ReactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417C1AE524F4AB9B005D0E08 /* ReactionTests.swift */; };
 		88B11CBC7CC55E6309C2E2E3 /* Pods_Creator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D10C601A78AADFF17B80E3E /* Pods_Creator.framework */; };
 /* End PBXBuildFile section */
 
@@ -105,13 +108,15 @@
 		22D9921A24B506D40042C6DA /* DiscoverControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverControllerCell.swift; sourceTree = "<group>"; };
 		22E6C35124DFBF1C00459038 /* mySong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mySong.mp3; sourceTree = "<group>"; };
 		22E6C35424E082CE00459038 /* sickoMode.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sickoMode.mp3; sourceTree = "<group>"; };
-		22E6C35724E08B4D00459038 /* sickoMode.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = sickoMode.mp4; path = /Users/dj/Downloads/sickoMode.mp4; sourceTree = "<absolute>"; };
+		22E6C35724E08B4D00459038 /* sickoMode.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = sickoMode.mp4; path = /Users/raghavsehtia/Downloads/sickoMode.mp4; sourceTree = "<absolute>"; };
 		417C1AC324EDFA18005D0E08 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		417C1AC624EE0C0F005D0E08 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		417C1ACC24EF5CC5005D0E08 /* CreatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CreatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		417C1AD024EF5CC5005D0E08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		417C1AD824F09F32005D0E08 /* UserModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelTests.swift; sourceTree = "<group>"; };
+		417C1AD824F09F32005D0E08 /* UserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
 		417C1ADB24F0A069005D0E08 /* CommentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTests.swift; sourceTree = "<group>"; };
+		417C1AE224F4AB6F005D0E08 /* Reaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reaction.swift; sourceTree = "<group>"; };
+		417C1AE524F4AB9B005D0E08 /* ReactionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionTests.swift; sourceTree = "<group>"; };
 		7D10C601A78AADFF17B80E3E /* Pods_Creator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Creator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A04B01D93A7806F05045C52F /* Pods-Creator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Creator.release.xcconfig"; path = "Target Support Files/Pods-Creator/Pods-Creator.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -319,6 +324,7 @@
 			children = (
 				417C1AC324EDFA18005D0E08 /* User.swift */,
 				417C1AC624EE0C0F005D0E08 /* Comment.swift */,
+				417C1AE224F4AB6F005D0E08 /* Reaction.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -335,8 +341,9 @@
 		417C1ADA24F09F44005D0E08 /* DataModelsTests */ = {
 			isa = PBXGroup;
 			children = (
-				417C1AD824F09F32005D0E08 /* UserModelTests.swift */,
+				417C1AD824F09F32005D0E08 /* UserTests.swift */,
 				417C1ADB24F0A069005D0E08 /* CommentTests.swift */,
+				417C1AE524F4AB9B005D0E08 /* ReactionTests.swift */,
 			);
 			path = DataModelsTests;
 			sourceTree = "<group>";
@@ -519,6 +526,7 @@
 				22D9921924B4D0480042C6DA /* DiscoverController.swift in Sources */,
 				227A8AAD24B97E21007769FA /* CollectibleDetailsTableViewCell.swift in Sources */,
 				227A492F2456040B00C3E4E5 /* ArtistProfileController.swift in Sources */,
+				417C1AE324F4AB6F005D0E08 /* Reaction.swift in Sources */,
 				22CA9220245A802400F8E325 /* PlayerViewController.swift in Sources */,
 				227A49042454CD9A00C3E4E5 /* SceneDelegate.swift in Sources */,
 				22389C2624F33F8F004A5635 /* CommentControllerCell.swift in Sources */,
@@ -540,9 +548,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				417C1AD624EF9B1E005D0E08 /* User.swift in Sources */,
+				417C1AE424F4AB7E005D0E08 /* Reaction.swift in Sources */,
 				417C1AE124F1EBBC005D0E08 /* CommentTests.swift in Sources */,
 				417C1AD724EF9B23005D0E08 /* Comment.swift in Sources */,
-				417C1AD924F09F32005D0E08 /* UserModelTests.swift in Sources */,
+				417C1AE724F4AB9B005D0E08 /* ReactionTests.swift in Sources */,
+				417C1AD924F09F32005D0E08 /* UserTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

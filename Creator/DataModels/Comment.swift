@@ -31,32 +31,4 @@ struct Comment : Equatable {
 //            "reactions" : reactions
         ]
     }
-
-    
-    static func == (lhs: Comment, rhs: Comment) -> Bool {
-          return lhs.user == rhs.user &&
-            lhs.createdAtSeconds == rhs.createdAtSeconds &&
-            lhs.body == rhs.body
-//            && lhs.reactions == rhs.reactions
-      }
-}
-
-struct Reaction : Equatable {
-    let user: User
-    let type: ReactionType
-    
-    init(user: User, type: ReactionType) {
-        self.user = user
-        self.type = type
-    }
-    
-    enum ReactionType : String {
-        case LIKE
-    }
-    
-    /** Returns dictionary representation of Comment. Used for storing in firebase. */
-    func toDictionary() -> NSDictionary {
-        return ["user" : user.toDictionary(),
-                "type" : type.rawValue]
-    }
 }
