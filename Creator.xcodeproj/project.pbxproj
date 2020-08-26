@@ -109,7 +109,7 @@
 		22D9921A24B506D40042C6DA /* DiscoverControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverControllerCell.swift; sourceTree = "<group>"; };
 		22E6C35124DFBF1C00459038 /* mySong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mySong.mp3; sourceTree = "<group>"; };
 		22E6C35424E082CE00459038 /* sickoMode.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = sickoMode.mp3; sourceTree = "<group>"; };
-		22E6C35724E08B4D00459038 /* sickoMode.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = sickoMode.mp4; path = /Users/raghavsehtia/Downloads/sickoMode.mp4; sourceTree = "<absolute>"; };
+		22E6C35724E08B4D00459038 /* sickoMode.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = sickoMode.mp4; path = ../../../../../../Downloads/sickoMode.mp4; sourceTree = SOURCE_ROOT; };
 		417C1AC324EDFA18005D0E08 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		417C1AC624EE0C0F005D0E08 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		417C1ACC24EF5CC5005D0E08 /* CreatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CreatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };

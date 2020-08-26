@@ -91,7 +91,7 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
         let newUser = User(userName: email, firstName: "Raghav", lastName: "Sehtia", type: User.UserType.FAN)
         
     //
-        let usersRef = Database.database().reference().child("users").child(uid)
+        let usersRef = Database.database().reference().child("users").child(newUser.userName)
 //        let values = ["creationDate": dateCreated, "email" : email, "userType" : "FAN"] as [String : Any]
 
         usersRef.updateChildValues(newUser.toDictionary() as! [AnyHashable : Any]) { (err, ref) in

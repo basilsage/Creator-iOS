@@ -8,10 +8,15 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class HomeFeedController : UITableViewController, HomeFeedCellDelegate {
     
     let cellId = "cellId"
+    
+    override func viewDidAppear(_ animated: Bool) {
+        fetchTransactions()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +80,50 @@ class HomeFeedController : UITableViewController, HomeFeedCellDelegate {
     var collectibleDescriptions = ["Hi Theo!! I'm so excited to listen. I'm your #1 fan. Love from South Carolina. Please come tour here one day!","Hi Theo!! I'm so excited to listen. I'm your #1 fan. Love from South Carolina. Please come tour here one day!","Hi Theo!! I'm so excited to listen. I'm your #1 fan. Love from South Carolina. Please come tour here one day!","Hi Theo!! I'm so excited to listen. I'm your #1 fan. Love from South Carolina. Please come tour here one day!"]
     
     
+    
+    //MARK: Fetch Data
+    
+    var feedItems = [FeedItem]()
+    
+    func fetchTransactions() {
+        feedItems.removeAll()
+        
+        let ref = Database.database().reference().child("transactions")
+        ref.observeSingleEvent(of: .value) { (snapshot) in
+            guard let dictionaries = snapshot.value as? [String: Any] else { return }
+            
+            dictionaries.forEach { (key, value) in
+                guard let dictionary = value as? [String : Any] else { return }
+                
+                print("transaction dictionary")
+                print(dictionary)
+                
+                 // get User object
+                let emailOfPurchaserInTransaction = dictionary["email"]
+                
+                let usersRef = Database.database().reference().child("users")
+                let desiredUserQuery = usersRef.queryOrdered(byChild: "email").queryEqual(toValue: emailOfPurchaserInTransaction)
+                desiredUserQuery.observeSingleEvent(of: .value) { (snapshot) in
+                    guard let dictionaries = snapshot.value as? [String: Any] else { return }
+                    print("user dictionary")
+                    print(dictionaries)
+                    
+                }
+                
+                
+                
+//                usersRef.orderByChild("email").equalTo(emailOfPurchaserInTransaction);
+//                purchaserUserRef.observe
+                
+                
+                
+                
+//                let feedItem = FeedItem(title: "purchased a collectible", author: dictionary["email"], createdAtSeconds: dictionary["purchased_at_seconds"])
+                
+            }
+         }
+    }
+    
     //MARK: TableView Required Methods
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! HomeFeedCell
@@ -110,4 +159,6 @@ class HomeFeedController : UITableViewController, HomeFeedCellDelegate {
 //        commentController.modalPresentationStyle = .automatic
 //        present(commentController, animated: true, completion: nil)
     }
+    
+    
 }
