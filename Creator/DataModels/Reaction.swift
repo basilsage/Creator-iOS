@@ -52,4 +52,17 @@ struct Reaction : Equatable {
         return String(userNameReaction.hashValue)
     }
     
+    /**
+     * Returns a list of reactions as a list of dictionaries, one dictionary per reaction.
+     *
+     * Storing lists in firebase is not recommended
+     */
+    static func toReactionDictionary(reactions: [Reaction]) -> Dictionary<String, Dictionary<String, Any>> {
+        var reactionDictionary = Dictionary<String, Dictionary<String, Any>>()
+        for reaction in reactions {
+            reactionDictionary[reaction.id] = reaction.toDictionary()
+        }
+        return reactionDictionary
+    }
+    
 }

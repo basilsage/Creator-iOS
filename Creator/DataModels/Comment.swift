@@ -39,21 +39,8 @@ struct Comment : Equatable {
         
         if !self.reactions.isEmpty {
             print("adding reactions")
-            dictionary["reactions"] = toReactionDictionary()
+            dictionary["reactions"] = Reaction.toReactionDictionary(reactions: self.reactions)
         }
         return dictionary
-    }
-    
-    /**
-     * Returns reactions as a list of dictionaries, one dictionary per reaction.
-     *
-     * Storing lists in firebase is not recommended
-     */
-    func toReactionDictionary() -> Dictionary<String, Dictionary<String, Any>> {
-        var reactionDictionary = Dictionary<String, Dictionary<String, Any>>()
-        for reaction in self.reactions {
-            reactionDictionary[reaction.id] = reaction.toDictionary()
-        }
-        return reactionDictionary
     }
 }

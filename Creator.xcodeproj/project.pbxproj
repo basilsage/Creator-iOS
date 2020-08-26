@@ -54,6 +54,7 @@
 		417C1AE324F4AB6F005D0E08 /* Reaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417C1AE224F4AB6F005D0E08 /* Reaction.swift */; };
 		417C1AE424F4AB7E005D0E08 /* Reaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417C1AE224F4AB6F005D0E08 /* Reaction.swift */; };
 		417C1AE724F4AB9B005D0E08 /* ReactionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417C1AE524F4AB9B005D0E08 /* ReactionTests.swift */; };
+		417C1AE924F5F847005D0E08 /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 417C1AE824F5F847005D0E08 /* FeedItem.swift */; };
 		88B11CBC7CC55E6309C2E2E3 /* Pods_Creator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D10C601A78AADFF17B80E3E /* Pods_Creator.framework */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +118,7 @@
 		417C1ADB24F0A069005D0E08 /* CommentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTests.swift; sourceTree = "<group>"; };
 		417C1AE224F4AB6F005D0E08 /* Reaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reaction.swift; sourceTree = "<group>"; };
 		417C1AE524F4AB9B005D0E08 /* ReactionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionTests.swift; sourceTree = "<group>"; };
+		417C1AE824F5F847005D0E08 /* FeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
 		7D10C601A78AADFF17B80E3E /* Pods_Creator.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Creator.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A04B01D93A7806F05045C52F /* Pods-Creator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Creator.release.xcconfig"; path = "Target Support Files/Pods-Creator/Pods-Creator.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -325,6 +327,7 @@
 				417C1AC324EDFA18005D0E08 /* User.swift */,
 				417C1AC624EE0C0F005D0E08 /* Comment.swift */,
 				417C1AE224F4AB6F005D0E08 /* Reaction.swift */,
+				417C1AE824F5F847005D0E08 /* FeedItem.swift */,
 			);
 			path = DataModels;
 			sourceTree = "<group>";
@@ -510,6 +513,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				417C1AE924F5F847005D0E08 /* FeedItem.swift in Sources */,
 				417C1ADD24F1E113005D0E08 /* User.swift in Sources */,
 				2232F22D2459CF2B007603EA /* SwiftGIF.swift in Sources */,
 				229B4B4A2457B5A1005A34CF /* CollectibleProfileLedgerCell.swift in Sources */,

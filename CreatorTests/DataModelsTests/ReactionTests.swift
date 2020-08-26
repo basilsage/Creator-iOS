@@ -34,6 +34,18 @@ class ReactionTests: XCTestCase {
         XCTAssertEqual(reaction.toDictionary()["createdAtSeconds"] as? NSNumber, 1598227200, "createdAtSeconds must be included in toDictionary")
     }
     
+    func toReactionDictionary_convertsListToDictionary() {
+        let user = User(userName: "ragst3r", firstName: "raghav", lastName: "sehtia", type: User.UserType.FAN)
+        let reactionOne = Reaction(user: user, type: Reaction.ReactionType.LIKE, createdAtSeconds: 1598227200 /** Aug 24, 2020 */)
+        let reactionTwo = Reaction(user: user, type: Reaction.ReactionType.LIKE, createdAtSeconds: 1598227200 /** Aug 24, 2020 */)
+        
+        let reactionDictionary = Reaction.toReactionDictionary(reactions: [reactionOne, reactionTwo])
+        
+        
+        XCTAssertEqual(reactionDictionary[reactionOne.id] as NSDictionary?, reactionOne.toDictionary() as NSDictionary, "Reaction dictionary includes first reaction")
+        XCTAssertEqual(reactionDictionary[reactionTwo.id] as NSDictionary?, reactionTwo.toDictionary() as NSDictionary, "Reaction dictionary includes first reaction")
+    }
+    
     func testReaction_isEquatable() {
         let user = User(userName: "ragst3r", firstName: "raghav", lastName: "sehtia", type: User.UserType.FAN)
         let reactionOne = Reaction(user: user, type: Reaction.ReactionType.LIKE, createdAtSeconds: 1598227200 /** Aug 24, 2020 */)
