@@ -12,7 +12,7 @@ class CommentTests: XCTestCase {
     
     func testComment_toDictionary_includesUser() {
         let reactionUser = User(userName: "redscare", firstName: "DJ", lastName: "Satoda", type: User.UserType.FAN)
-        let reaction = Reaction(user: reactionUser, type: Reaction.ReactionType.LIKE)
+        let reaction = Reaction(user: reactionUser, type: Reaction.ReactionType.LIKE, createdAtSeconds: 1598227200 /** Aug 24, 2020 */)
         let commentUser = User(userName: "ragst3r", firstName: "raghav", lastName: "sehtia", type: User.UserType.FAN)
         let comment = Comment(user: commentUser, createdAtSeconds: 1598054400 /** Aug 22, 2020 */, body: "body comment", reactions: [reaction])
 
@@ -21,7 +21,7 @@ class CommentTests: XCTestCase {
 
     func testComment_toDictionary_includesCreatedAtSeconds() {
         let reactionUser = User(userName: "redscare", firstName: "DJ", lastName: "Satoda", type: User.UserType.FAN)
-        let reaction = Reaction(user: reactionUser, type: Reaction.ReactionType.LIKE)
+        let reaction = Reaction(user: reactionUser, type: Reaction.ReactionType.LIKE, createdAtSeconds: 1598227200 /** Aug 24, 2020 */)
         let commentUser = User(userName: "ragst3r", firstName: "raghav", lastName: "sehtia", type: User.UserType.FAN)
         let comment = Comment(user: commentUser, createdAtSeconds: 1598054400, body: "body comment", reactions: [reaction])
 
@@ -30,7 +30,7 @@ class CommentTests: XCTestCase {
 
     func testComment_toDictionary_includesBody() {
         let reactionUser = User(userName: "redscare", firstName: "DJ", lastName: "Satoda", type: User.UserType.FAN)
-        let reaction = Reaction(user: reactionUser, type: Reaction.ReactionType.LIKE)
+        let reaction = Reaction(user: reactionUser, type: Reaction.ReactionType.LIKE, createdAtSeconds: 1598227200 /** Aug 24, 2020 */)
         let commentUser = User(userName: "ragst3r", firstName: "raghav", lastName: "sehtia", type: User.UserType.FAN)
         let comment = Comment(user: commentUser, createdAtSeconds: 1598054400 /** Aug 22, 2020 */, body: "body comment", reactions: [reaction])
 
@@ -40,8 +40,8 @@ class CommentTests: XCTestCase {
     func testComment_toDictionary_includesReactions() {
         let reactionUser = User(userName: "redscare", firstName: "DJ", lastName: "Satoda", type: User.UserType.FAN)
         let commentUser = User(userName: "ragst3r", firstName: "raghav", lastName: "sehtia", type: User.UserType.FAN)
-        let reactionOne = Reaction(user: reactionUser, type: Reaction.ReactionType.LIKE)
-        let reactionTwo = Reaction(user: reactionUser, type: Reaction.ReactionType.LIKE)
+        let reactionOne = Reaction(user: reactionUser, type: Reaction.ReactionType.LIKE, createdAtSeconds: 1598227200 /** Aug 24, 2020 */)
+        let reactionTwo = Reaction(user: reactionUser, type: Reaction.ReactionType.LIKE, createdAtSeconds: 1598227200 /** Aug 24, 2020 */)
 
         let comment = Comment(user: commentUser, createdAtSeconds: 1598054400 /** Aug 22, 2020 */, body: "body comment", reactions: [reactionOne, reactionTwo])
         
@@ -55,7 +55,7 @@ class CommentTests: XCTestCase {
 
     func testComment_isEquatable() {
         let reactionUser = User(userName: "redscare", firstName: "DJ", lastName: "Satoda", type: User.UserType.FAN)
-        let reaction = Reaction(user: reactionUser, type: Reaction.ReactionType.LIKE)
+        let reaction = Reaction(user: reactionUser, type: Reaction.ReactionType.LIKE, createdAtSeconds: 1598227200 /** Aug 24, 2020 */)
         let commentUser = User(userName: "ragst3r", firstName: "raghav", lastName: "sehtia", type: User.UserType.FAN)
 
         let commentOne = Comment(user: commentUser, createdAtSeconds: 1598054400 /** Aug 22, 2020 */, body: "body comment", reactions: [reaction])

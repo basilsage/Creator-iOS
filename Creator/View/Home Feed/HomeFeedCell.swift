@@ -108,21 +108,18 @@ class HomeFeedCell : UITableViewCell {
     @objc func likeButtonPressed() {
         print("Like Button Pressed") //eventually add like to backend
         let currentUser = User(userName: "myUsername", firstName: "DJ", lastName: "Raghav", type: User.UserType.FAN)
-        let myReaction = Reaction(user: currentUser, type: Reaction.ReactionType.LIKE)
+        let myReaction = Reaction(user: currentUser, type: Reaction.ReactionType.LIKE, createdAtSeconds: NSNumber(value: NSDate().timeIntervalSince1970))
         let usersRef = Database.database().reference().child("feedItems").child("rossPurchasedACollectibleToday").child("reactions")
         let userRefAutoChild = usersRef.childByAutoId()
-        
-        userRefAutoChild.updateChildValues(myReaction.toDictionary() as! [AnyHashable : Any]) { (err, ref) in
+
+        userRefAutoChild.updateChildValues(myReaction.toDictionary() as [AnyHashable : Any]) { (err, ref) in
             if let err = err {
-                
                 print("Failed to save reaction", err)
                 return
             }
-
             print("Successfully saved reaction to DB")
-            
+
         }
-        
     }
     
     @objc func commentButtonPressed() {

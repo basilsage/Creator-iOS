@@ -18,10 +18,13 @@ struct Reaction : Equatable {
     
     let user: User
     let type: ReactionType
+    // The time this comment was created in milliseconds since Epoch
+    let createdAtSeconds: NSNumber
     
-    init(user: User, type: ReactionType) {
+    init(user: User, type: ReactionType, createdAtSeconds: NSNumber) {
         self.user = user
         self.type = type
+        self.createdAtSeconds = createdAtSeconds
         self._id = createUniqueId()
     }
     
@@ -31,8 +34,11 @@ struct Reaction : Equatable {
     
     /** Returns dictionary representation of Comment. Used for storing in firebase. */
     func toDictionary() -> Dictionary<String, Any> {
-        return ["user" : user.toDictionary(),
-                "type" : type.rawValue]
+        return [
+            "user" : user.toDictionary(),
+            "type" : type.rawValue,
+            "createdAtSeconds" : createdAtSeconds
+        ]
     }
     
     /**

@@ -6,6 +6,7 @@
 //  Copyright © 2020 DJ Satoda. All rights reserved.
 //
 
+import Firebase
 import Foundation
 import UIKit
 
@@ -55,8 +56,31 @@ class CommentControllerCell : UITableViewCell {
     }()
     
     @objc func likeButtonPressed() {
+        // save like button to db
         print("Likedd")
     }
+    
+//    func saveToDb() {
+//        guard let uid = Auth.auth().currentUser?.uid else { return }
+//        let dateCreated = NSDate().timeIntervalSince1970
+//        guard let email = Auth.auth().currentUser?.email else { return }
+//
+//        let newUser = User(userName: email, firstName: "Raghav", lastName: "Sehtia", type: User.UserType.FAN)
+//
+//        let reaction = Reaction(user: newUser, type: Reaction.ReactionType.LIKE)
+//        //
+//        let usersRef = Database.database().reference().child("feedItems").child(uid)
+//        //        let values = ["creationDate": dateCreated, "email" : email, "userType" : "FAN"] as [String : Any]
+//
+//        usersRef.updateChildValues(reaction.toDictionary() as [AnyHashable : Any]) { (err, ref) in
+//            if let err = err {
+//                print("Failed to save user to DB", err)
+//                return
+//            }
+//
+//            print("Successfully saved user to DB")
+//        }
+//    }
     
     
     let bottomDivider : UIView = {
