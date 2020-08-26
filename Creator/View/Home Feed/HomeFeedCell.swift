@@ -125,21 +125,21 @@ class HomeFeedCell : UITableViewCell {
     @objc func commentButtonPressed() {
         print("Comment button pressed, passing to delegate") //eventually present comment view controller
         delegate?.didTapCommentButton()
-        
-        
-//        let currentUser = User(userName: "myUsername", firstName: "DJ", lastName: "Raghav", type: User.UserType.FAN)
-//        var myComment = Comment(user: currentUser, createdAtSeconds: NSNumber(value: NSDate().timeIntervalSince1970), body: "Hello, world")
-//
-//        let usersRef = Database.database().reference().child("comments").child("collectible_0000001")
-//
-//        usersRef.updateChildValues(myComment.toDictionary() as! [AnyHashable : Any]) { (err, ref) in
-//            if let err = err {
-//                print("Failed to save comment to DB", err)
-//                return
-//            }
-//
-//            print("Successfully saved comment to DB")
-//        }
+
+        let currentUser = User(userName: "myUsername", firstName: "DJ", lastName: "Raghav", type: User.UserType.FAN)
+        let reaction = Reaction(user: currentUser, type: Reaction.ReactionType.LIKE, createdAtSeconds:NSNumber(value: NSDate().timeIntervalSince1970))
+        let myComment = Comment(user: currentUser, createdAtSeconds: NSNumber(value: NSDate().timeIntervalSince1970), body: "Hello, world", reactions: [reaction])
+
+        let usersRef = Database.database().reference().child("comments").child("collectible_0000002")
+
+        usersRef.updateChildValues(myComment.toDictionary() as [AnyHashable : Any]) { (err, ref) in
+            if let err = err {
+                print("Failed to save comment to DB", err)
+                return
+            }
+
+            print("Successfully saved comment to DB")
+        }
     }
     
     //MARK: Initializers
