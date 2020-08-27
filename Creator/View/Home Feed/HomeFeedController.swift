@@ -75,8 +75,6 @@ class HomeFeedController : UITableViewController, HomeFeedCellDelegate {
     var collectibleTitles = ["Zesty", "Zesty", "Zesty","Zesty"]
     var collectibleTypes = ["Jam Session", "Jam Session", "Jam Session","Jam Session"]
     var collectibleArtists = ["More Fatter", "More Fatter", "More Fatter","More Fatter"]
-    
-    var rarityDescription = ["VERY RARE - One of 100 Copies","RARE\n1 / 10k" , "ULTRA RARE - One of 10 Copies","RARE - One of 10,000 Copies"]
     var collectibleDescriptions = ["Hi Theo!! I'm so excited to listen. I'm your #1 fan. Love from South Carolina. Please come tour here one day!","Hi Theo!! I'm so excited to listen. I'm your #1 fan. Love from South Carolina. Please come tour here one day!","Hi Theo!! I'm so excited to listen. I'm your #1 fan. Love from South Carolina. Please come tour here one day!","Hi Theo!! I'm so excited to listen. I'm your #1 fan. Love from South Carolina. Please come tour here one day!"]
     
     
@@ -88,53 +86,100 @@ class HomeFeedController : UITableViewController, HomeFeedCellDelegate {
     func fetchTransactions() {
         feedItems.removeAll()
         
+        
+        // THIS IS NOT SAFE, CURRENTLY IF EVEN ONE EMAIL DOES NOT MATCH, ENTIRE GLOBAL FEED WILL FAIL. NEED TO IMPLEMENT SKIPPING OF NONMATCHING ITEMS
+        
+        //create a path to all transactions
         let ref = Database.database().reference().child("transactions")
+        
+        // grab all transactions
         ref.observeSingleEvent(of: .value) { (snapshot) in
-            guard let dictionaries = snapshot.value as? [String: Any] else { return }
             
+            // converts all transactions into a single dictionary
+            guard let dictionaries = snapshot.value as? [String: Any] else { return }
+            print("All transactions dictionary: ")
+            print(dictionaries)
+            
+            // for each transaction in dictionary:
             dictionaries.forEach { (key, value) in
-                guard let dictionary = value as? [String : Any] else { return }
                 
-                print("transaction dictionary")
+                // turn the transaction into a dictionary
+                guard let dictionary = value as? [String : Any] else { return }
+                print("For each dictionary, currently: ")
                 print(dictionary)
                 
-                 // get User object
-                let emailOfPurchaserInTransaction = dictionary["email"]
+                // get purchase time from Stripe data
+                let buyerEmailPassedByZapierToFirebase = dictionary["email"]
+                let createdAtSeconds = dictionary["purchased_at_seconds"] as! NSNumber
+                let createdAtSecondsDouble = createdAtSeconds as! Double
+                let createdAtDate = NSDate(timeIntervalSince1970: createdAtSecondsDouble)
+    
                 
-                let usersRef = Database.database().reference().child("users")
-                let desiredUserQuery = usersRef.queryOrdered(byChild: "email").queryEqual(toValue: emailOfPurchaserInTransaction)
-                desiredUserQuery.observeSingleEvent(of: .value) { (snapshot) in
-                    guard let dictionaries = snapshot.value as? [String: Any] else { return }
-                    print("user dictionary")
-                    print(dictionaries)
+                // create feed item
+                print("Creating feed item")
+                let feedItem = FeedItem(title: "\(createdAtDate) by \(buyerEmailPassedByZapierToFirebase)", author: buyerEmailPassedByZapierToFirebase as! String, createdAtSeconds: createdAtSeconds)
+                
+                print("Appending feed item")
+                self.feedItems.append(feedItem)
+                
+//                // get the buyer email
+//                let buyerEmailPassedByZapierToFirebase = dictionary["email"]
+//
+//                // create path to users tree in Firebase
+//                let usersRef = Database.database().reference().child("users")
+//
+//                // find user whose email = the email in the data passed by Zapier
+//                let desiredUserQuery = usersRef.queryOrdered(byChild: "email").queryEqual(toValue: buyerEmailPassedByZapierToFirebase)
+//
+//                // get User object of user found above
+//                desiredUserQuery.observeSingleEvent(of: .value) { (snapshot) in
+//                    guard let dictionaries = snapshot.value as? [String: Any] else { return }
+//
+//                    print("Relevant user in our user database")
+//                    print(dictionaries)
+//
+//                    // get purchase time from Stripe data
+//                    let createdAtSeconds = dictionary["purchased_at_seconds"] as! NSNumber
+//                    let createdAtSecondsDouble = createdAtSeconds as! Double
+//                    let createdAtDate = NSDate(timeIntervalSince1970: createdAtSecondsDouble)
+//
+//
+//                    // create feed item
+//                    print("Creating feed item")
+//                    let feedItem = FeedItem(title: "\(createdAtDate) by \(buyerEmailPassedByZapierToFirebase)", author: buyerEmailPassedByZapierToFirebase as! String, createdAtSeconds: createdAtSeconds)
+//
+//                    print("Appending feed item")
+//                    self.feedItems.append(feedItem)
+//
+//                    print("printing self.feed items after appending (inside observeSingleEvent)")
+//                    print(self.feedItems)
+//                    self.tableView.reloadData()
                     
                 }
-                
-                
-                
-//                usersRef.orderByChild("email").equalTo(emailOfPurchaserInTransaction);
-//                purchaserUserRef.observe
-                
-                
-                
-                
-//                let feedItem = FeedItem(title: "purchased a collectible", author: dictionary["email"], createdAtSeconds: dictionary["purchased_at_seconds"])
+            
+            print("printing self.feed items outside .ForEach")
+            print(self.feedItems)
+            self.tableView.reloadData()
                 
             }
+            
+            
          }
-    }
+        
     
     //MARK: TableView Required Methods
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! HomeFeedCell
         cell.delegate = self
         cell.isUserInteractionEnabled = true
+        
         cell.friendProfileImage.image = friendProfilePics[indexPath.row]
         cell.friendActionDescriptor.attributedText = friendActions[indexPath.row]
         cell.collectibleImage.image = collectibleImages[indexPath.row]
         cell.collectibleTitle.attributedText = collectibleTitleAndTypes[indexPath.row]
-        cell.collectibleDescription.text = collectibleDescriptions[indexPath.row]
+        cell.homeFeedItemCaption.text = feedItems[indexPath.row].title
         cell.collectibleArtist.text = collectibleArtists[indexPath.row]
+        
         cell.selectionStyle = .none
         
         return cell
@@ -142,7 +187,7 @@ class HomeFeedController : UITableViewController, HomeFeedCellDelegate {
     
     // Determines number of rowss
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return collectibleTitles.count
+        return feedItems.count
     }
 
     // Determines height of cell
@@ -156,8 +201,6 @@ class HomeFeedController : UITableViewController, HomeFeedCellDelegate {
         print("Delegate received")
         let commentController = CommentController()
         navigationController?.pushViewController(commentController, animated: true)
-//        commentController.modalPresentationStyle = .automatic
-//        present(commentController, animated: true, completion: nil)
     }
     
     

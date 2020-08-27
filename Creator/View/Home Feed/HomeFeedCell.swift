@@ -55,7 +55,7 @@ class HomeFeedCell : UITableViewCell {
         return ca
     }()
     
-    let collectibleDescription : UILabel = {
+    let homeFeedItemCaption : UILabel = {
         let cd = UILabel()
         cd.font = UIFont(name: "Futura-Medium", size: 12)
         cd.textColor = UIColor.rgb(red: 70, green: 69, blue: 70)
@@ -126,20 +126,20 @@ class HomeFeedCell : UITableViewCell {
         print("Comment button pressed, passing to delegate") //eventually present comment view controller
         delegate?.didTapCommentButton()
 
-        let currentUser = User(userName: "myUsername", firstName: "DJ", lastName: "Raghav", type: User.UserType.FAN)
-        let reaction = Reaction(user: currentUser, type: Reaction.ReactionType.LIKE, createdAtSeconds:NSNumber(value: NSDate().timeIntervalSince1970))
-        let myComment = Comment(user: currentUser, createdAtSeconds: NSNumber(value: NSDate().timeIntervalSince1970), body: "Hello, world", reactions: [reaction])
-
-        let usersRef = Database.database().reference().child("comments").child("collectible_0000002")
-
-        usersRef.updateChildValues(myComment.toDictionary() as [AnyHashable : Any]) { (err, ref) in
-            if let err = err {
-                print("Failed to save comment to DB", err)
-                return
-            }
-
-            print("Successfully saved comment to DB")
-        }
+//        let currentUser = User(userName: "myUsername", firstName: "DJ", lastName: "Raghav", type: User.UserType.FAN)
+//        let reaction = Reaction(user: currentUser, type: Reaction.ReactionType.LIKE, createdAtSeconds:NSNumber(value: NSDate().timeIntervalSince1970))
+//        let myComment = Comment(user: currentUser, createdAtSeconds: NSNumber(value: NSDate().timeIntervalSince1970), body: "Hello, world", reactions: [reaction])
+//
+//        let usersRef = Database.database().reference().child("comments").child("collectible_0000002")
+//
+//        usersRef.updateChildValues(myComment.toDictionary() as [AnyHashable : Any]) { (err, ref) in
+//            if let err = err {
+//                print("Failed to save comment to DB", err)
+//                return
+//            }
+//
+//            print("Successfully saved comment to DB")
+//        }
     }
     
     //MARK: Initializers
@@ -165,8 +165,8 @@ class HomeFeedCell : UITableViewCell {
         addSubview(collectibleArtist)
         collectibleArtist.anchor(top: collectibleTitle.bottomAnchor, left: collectibleImage.rightAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 15, paddingBottom: 0, paddingRight: 15, width: 0, height: 30)
         
-        addSubview(collectibleDescription)
-        collectibleDescription.anchor(top: collectibleImage.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 15, paddingBottom: 0, paddingRight: 15, width: 0, height: 50)
+        addSubview(homeFeedItemCaption)
+        homeFeedItemCaption.anchor(top: collectibleImage.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 15, paddingBottom: 0, paddingRight: 15, width: 0, height: 50)
         
         addSubview(rarityBadge)
         rarityBadge.anchor(top: collectibleImage.topAnchor, left: nil, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 0, paddingBottom: 0, paddingRight: 15, width: 40, height: 40)

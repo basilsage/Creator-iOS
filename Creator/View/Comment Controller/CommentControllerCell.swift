@@ -34,7 +34,7 @@ class CommentControllerCell : UITableViewCell {
         uabl.numberOfLines = 0
         
         let attributedText = NSMutableAttributedString(string: "username ", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 8)])
-        attributedText.append(NSMutableAttributedString(string: "hello this is my comment. ake a symbolic breakpoint at UIViewAlertForUnsatisfiableConstraints to catch this in the debugger.", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 8)]))
+        attributedText.append(NSMutableAttributedString(string: "hello this is my comment.. I am a small small man in a big big world and i want to buy music NOW", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 8)]))
         uabl.attributedText = attributedText
 
         return uabl
@@ -98,19 +98,19 @@ class CommentControllerCell : UITableViewCell {
         let profileImageWidth : CGFloat = 30
         
         addSubview(profileImage)
-        profileImage.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 0, width: profileImageWidth, height: profileImageWidth)
+        profileImage.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 0, width: profileImageWidth, height: 0)
         profileImage.layer.cornerRadius = profileImageWidth / 2
         
         addSubview(likeButton)
-        likeButton.anchor(top: topAnchor, left: nil, bottom: bottomAnchor, right: rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 10, paddingRight: 10, width: 50, height: 50)
+        likeButton.anchor(top: topAnchor, left: nil, bottom: bottomAnchor, right: rightAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 10, paddingRight: 10, width: 50, height: 0)
         
         
         addSubview(usernameAndBodyLabel)
         usernameAndBodyLabel.anchor(top: topAnchor, left: profileImage.rightAnchor, bottom: nil, right: likeButton.leftAnchor, paddingTop: 10, paddingLeft: 10, paddingBottom: 0, paddingRight: 10, width: 0, height: 10)
-        
+//        
         addSubview(commentTimeLabel)
-        commentTimeLabel.anchor(top: usernameAndBodyLabel.bottomAnchor, left: profileImage.rightAnchor, bottom: bottomAnchor, right: nil, paddingTop: 5, paddingLeft: 10, paddingBottom: 10, paddingRight: 0, width: 80, height: 10)
-        
+        commentTimeLabel.anchor(top: usernameAndBodyLabel.bottomAnchor, left: profileImage.rightAnchor, bottom: bottomAnchor, right: nil, paddingTop: 5, paddingLeft: 10, paddingBottom: 10, paddingRight: 0, width: 80, height: 0)
+//        
 
         
     }

@@ -37,6 +37,7 @@
 		229B4B482457B58B005A34CF /* CollectibleProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229B4B472457B58B005A34CF /* CollectibleProfileController.swift */; };
 		229B4B4A2457B5A1005A34CF /* CollectibleProfileLedgerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229B4B492457B5A0005A34CF /* CollectibleProfileLedgerCell.swift */; };
 		22B1F83B245A769B003A364A /* CongratulationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B1F83A245A769B003A364A /* CongratulationsViewController.swift */; };
+		22C7F74024F72BAA0002E756 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C7F73F24F72BAA0002E756 /* CustomView.swift */; };
 		22CA9220245A802400F8E325 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CA921F245A802400F8E325 /* PlayerViewController.swift */; };
 		22CA9222245A816900F8E325 /* visualizer.gif in Resources */ = {isa = PBXBuildFile; fileRef = 22CA9221245A816900F8E325 /* visualizer.gif */; };
 		22CA9224245A88A200F8E325 /* wildOut.gif in Resources */ = {isa = PBXBuildFile; fileRef = 22CA9223245A88A200F8E325 /* wildOut.gif */; };
@@ -102,6 +103,7 @@
 		229B4B472457B58B005A34CF /* CollectibleProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectibleProfileController.swift; sourceTree = "<group>"; };
 		229B4B492457B5A0005A34CF /* CollectibleProfileLedgerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectibleProfileLedgerCell.swift; sourceTree = "<group>"; };
 		22B1F83A245A769B003A364A /* CongratulationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CongratulationsViewController.swift; sourceTree = "<group>"; };
+		22C7F73F24F72BAA0002E756 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		22CA921F245A802400F8E325 /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		22CA9221245A816900F8E325 /* visualizer.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = visualizer.gif; sourceTree = "<group>"; };
 		22CA9223245A88A200F8E325 /* wildOut.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = wildOut.gif; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				227A49032454CD9A00C3E4E5 /* SceneDelegate.swift */,
 				227A491D2454D1AE00C3E4E5 /* UIUtilityMethods.swift */,
 				2232F22C2459CF2B007603EA /* SwiftGIF.swift */,
+				22C7F73F24F72BAA0002E756 /* CustomView.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				417C1AE924F5F847005D0E08 /* FeedItem.swift in Sources */,
+				22C7F74024F72BAA0002E756 /* CustomView.swift in Sources */,
 				417C1ADD24F1E113005D0E08 /* User.swift in Sources */,
 				2232F22D2459CF2B007603EA /* SwiftGIF.swift in Sources */,
 				229B4B4A2457B5A1005A34CF /* CollectibleProfileLedgerCell.swift in Sources */,
