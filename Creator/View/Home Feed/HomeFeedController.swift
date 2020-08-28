@@ -16,6 +16,89 @@ class HomeFeedController : UITableViewController, HomeFeedCellDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         fetchTransactions()
+        checkForUnjoinedTransactionData()
+        
+    }
+    
+    func checkForUnjoinedTransactionData() {
+        
+        guard let currentUserEmail = Auth.auth().currentUser?.email else { return }
+        let currentTime = NSDate().timeIntervalSince1970
+        
+        //MARK: Check for Matching Transaction
+        
+        //create a path to all transactions
+        let transactionsRef = Database.database().reference().child("transactions")
+        let desiredTransactionQuery = transactionsRef.queryOrdered(byChild: "email").queryEqual(toValue: currentUserEmail)
+        
+        desiredTransactionQuery.observeSingleEvent(of: .value) { (snapshot) in
+            guard let dictionaries = snapshot.value as? [String: Any] else {
+                print("This user does not have a matching transaction")
+                return
+            }
+            print("This user has a matching transaction")
+            print(dictionaries)
+            
+            dictionaries.forEach { (key, value) in
+                                
+                // Add buyer to transaction
+                
+                let buyerUser = User(userName: currentUserEmail, firstName: "X", lastName: "X", type: User.UserType.FAN)
+                let transactionBuyerRef = Database.database().reference().child("transactions").child(key).child("buyer")
+                transactionBuyerRef.updateChildValues(buyerUser.toDictionary()) { (err, ref) in
+                    if let err = err {
+                        print("Failed to save buyer to transaction", err)
+                        return
+                    }
+                    print("Succesfully saved buyer to DB")
+                }
+                
+                // Add seller to transaction
+                
+                let sellerUser = User(userName: "moreFatter", firstName: "X", lastName: "X", type: User.UserType.CREATOR)
+                let transactionSellerRef = Database.database().reference().child("transactions").child(key).child("seller")
+                transactionSellerRef.updateChildValues(sellerUser.toDictionary()) { (err, ref) in
+                    if let err = err {
+                        print("Failed to save seller to transaction", err)
+                        return
+                    }
+                    print("Succesfully saved seller to DB")
+                }
+                
+                // Create Home Feed Item
+                
+                let homeFeedItemsRef = Database.database().reference().child("homeFeedItems")
+                let desiredHomeFeedItemQuery = homeFeedItemsRef.queryOrdered(byChild: "author").queryEqual(toValue: currentUserEmail)
+                
+                desiredHomeFeedItemQuery.observeSingleEvent(of: .value) { (snapshot) in
+                    guard let dictionaries = snapshot.value as? [String: Any] else {
+                        print("This user does not have a matching HFI")
+                        
+                        let homeFeedItem = ["title" : "purchased a collectible", "author" : currentUserEmail, "createdAtSeconds" : currentTime] as [String : Any]
+                        
+                        let newHomeFeedItemsRef = Database.database().reference().child("homeFeedItems").childByAutoId()
+                        newHomeFeedItemsRef.updateChildValues(homeFeedItem) { (err, ref) in
+                            if let err = err {
+                                print("Failed to save home feed item", err)
+                                return
+                            }
+                            print("Succesfully saved home feed item")
+                        }
+                        
+                        return
+                        
+                    }
+                    print("This user has a matching HFI")
+                    
+    //                let homeFeedItem = FeedItem(title: <#T##String#>, author: <#T##String#>, createdAtSeconds: <#T##NSNumber#>)
+
+                
+                
+                
+            }
+        }
+
+        }
     }
     
     override func viewDidLoad() {
@@ -90,75 +173,30 @@ class HomeFeedController : UITableViewController, HomeFeedCellDelegate {
         // THIS IS NOT SAFE, CURRENTLY IF EVEN ONE EMAIL DOES NOT MATCH, ENTIRE GLOBAL FEED WILL FAIL. NEED TO IMPLEMENT SKIPPING OF NONMATCHING ITEMS
         
         //create a path to all transactions
-        let ref = Database.database().reference().child("transactions")
+        let ref = Database.database().reference().child("homeFeedItems")
         
         // grab all transactions
         ref.observeSingleEvent(of: .value) { (snapshot) in
             
             // converts all transactions into a single dictionary
             guard let dictionaries = snapshot.value as? [String: Any] else { return }
-            print("All transactions dictionary: ")
-            print(dictionaries)
             
             // for each transaction in dictionary:
             dictionaries.forEach { (key, value) in
                 
                 // turn the transaction into a dictionary
                 guard let dictionary = value as? [String : Any] else { return }
-                print("For each dictionary, currently: ")
-                print(dictionary)
                 
                 // get purchase time from Stripe data
-                let buyerEmailPassedByZapierToFirebase = dictionary["email"]
-                let createdAtSeconds = dictionary["purchased_at_seconds"] as! NSNumber
+                let purchaser = dictionary["author"]
+                let createdAtSeconds = dictionary["createdAtSeconds"] as! NSNumber
                 let createdAtSecondsDouble = createdAtSeconds as! Double
                 let createdAtDate = NSDate(timeIntervalSince1970: createdAtSecondsDouble)
-    
-                
-                // create feed item
-                print("Creating feed item")
-                let feedItem = FeedItem(title: "\(createdAtDate) by \(buyerEmailPassedByZapierToFirebase)", author: buyerEmailPassedByZapierToFirebase as! String, createdAtSeconds: createdAtSeconds)
-                
-                print("Appending feed item")
-                self.feedItems.append(feedItem)
-                
-//                // get the buyer email
-//                let buyerEmailPassedByZapierToFirebase = dictionary["email"]
-//
-//                // create path to users tree in Firebase
-//                let usersRef = Database.database().reference().child("users")
-//
-//                // find user whose email = the email in the data passed by Zapier
-//                let desiredUserQuery = usersRef.queryOrdered(byChild: "email").queryEqual(toValue: buyerEmailPassedByZapierToFirebase)
-//
-//                // get User object of user found above
-//                desiredUserQuery.observeSingleEvent(of: .value) { (snapshot) in
-//                    guard let dictionaries = snapshot.value as? [String: Any] else { return }
-//
-//                    print("Relevant user in our user database")
-//                    print(dictionaries)
-//
-//                    // get purchase time from Stripe data
-//                    let createdAtSeconds = dictionary["purchased_at_seconds"] as! NSNumber
-//                    let createdAtSecondsDouble = createdAtSeconds as! Double
-//                    let createdAtDate = NSDate(timeIntervalSince1970: createdAtSecondsDouble)
-//
-//
-//                    // create feed item
-//                    print("Creating feed item")
-//                    let feedItem = FeedItem(title: "\(createdAtDate) by \(buyerEmailPassedByZapierToFirebase)", author: buyerEmailPassedByZapierToFirebase as! String, createdAtSeconds: createdAtSeconds)
-//
-//                    print("Appending feed item")
-//                    self.feedItems.append(feedItem)
-//
-//                    print("printing self.feed items after appending (inside observeSingleEvent)")
-//                    print(self.feedItems)
-//                    self.tableView.reloadData()
                     
+                // create feed item
+                let feedItem = FeedItem(title: "\(createdAtDate) by \(purchaser)", author: purchaser as! String, createdAtSeconds: createdAtSeconds)
+                self.feedItems.append(feedItem)
                 }
-            
-            print("printing self.feed items outside .ForEach")
-            print(self.feedItems)
             self.tableView.reloadData()
                 
             }

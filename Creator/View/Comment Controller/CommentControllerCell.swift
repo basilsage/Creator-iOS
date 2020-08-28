@@ -98,7 +98,7 @@ class CommentControllerCell : UITableViewCell {
         let profileImageWidth : CGFloat = 30
         
         addSubview(profileImage)
-        profileImage.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 0, width: profileImageWidth, height: 0)
+        profileImage.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 10, paddingBottom: 10, paddingRight: 0, width: profileImageWidth, height: profileImageWidth)
         profileImage.layer.cornerRadius = profileImageWidth / 2
         
         addSubview(likeButton)

@@ -26,6 +26,9 @@ class CommentController : UITableViewController {
         navigationController?.navigationBar.backItem?.backBarButtonItem?.tintColor = .black
         tableView.allowsSelection = false
         
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 100
+        
     }
     
     //MARK: Feed data, to be replaced by backend
@@ -91,9 +94,7 @@ class CommentController : UITableViewController {
         return comments.count
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
-    }
+
     
     // idk why you need lazy but you can't grab its text until you do...
     lazy var containerView : UIView = {
@@ -149,7 +150,10 @@ class CommentController : UITableViewController {
             }
 
             print("Successfully saved comment to DB")
+            self.tableView.reloadData()
         }
+        
+        
         
     }
     
